@@ -8,7 +8,7 @@ import requests
 #from models import User, Appointment, Service
 from sms_utils import send_sms_code, verify_sms_code
 from telegram_utils_ import send_telegram_message
-from admin import admin_bp
+#from admin import admin_bp
 from config import Config
 from extensions import db
 
