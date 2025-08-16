@@ -6,7 +6,7 @@ import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 import requests
 #from models import User, Appointment, Service
-from sms_utils import send_sms_code, verify_sms_code
+#from sms_utils import send_sms_code, verify_sms_code
 from telegram_utils_ import send_telegram_message
 from admin import admin_bp
 from config import Config
