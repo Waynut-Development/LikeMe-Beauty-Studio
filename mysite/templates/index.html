@@ -306,16 +306,6 @@
 
     <div class="sidebar" id="sidebar">
         <div class="sidebar-menu">            
-            <div class="menu-item" onclick="alert('Открыть базу знаний')">
-                <svg class="menu-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M14 2H6C4.89543 2 4 2.89543 4 4V16H14V2Z" />
-                    <path d="M18 2H14V16H18V2Z" />
-                    <path d="M20 2H18V16H20V2Z" />
-                    <path d="M22 2H20V16H22V2Z" />
-                </svg>
-                <span class="menu-text">База знаний</span>
-            </div>
-            
             <div class="menu-item" onclick="alert('Перейти на YouTube-канал')">
                 <svg class="menu-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M19 8C19 6.89543 18.1046 6 17 6H7C5.89543 6 5 6.89543 5 8V16C5 17.1046 5.89543 18 7 18H17C18.1046 18 19 17.1046 19 16V8Z" />
@@ -323,16 +313,7 @@
                 </svg>
                 <span class="menu-text">YouTube-канал</span>
             </div>
-            
-            <div class="menu-item" onclick="alert('Перейти на вебинары')">
-                <svg class="menu-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" />
-                    <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" />
-                    <path d="M12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z" />
-                </svg>
-                <span class="menu-text">Вебинары</span>
-            </div>
-            
+                      
             <div class="menu-item" onclick="alert('Перейти в академию YCLIENTS')">
                 <svg class="menu-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" />
@@ -344,7 +325,7 @@
             
         </div>
         <div class="sidebar-footer">
-            <button onclick="alert('Запись на услугу')">Запись на услугу</button>
+            <button href="booking.html">Запись на услугу</button>
         </div>
     </div>
 <!-- Отступ -->
@@ -376,13 +357,7 @@
           {% endfor %}
         </div>
       </section>
-      
-      {% if session.get('authenticated') %}
-        <p>Вы вошли как {{ session['phone'] }}. <a href="{{ url_for('logout') }}">Выйти</a></p>
-      {% else %}
-        <a href="{{ url_for('login') }}">Записаться</a>
-      {% endif %}
-      
+
     <footer>
         <p>&copy; 2025 LikeMe beauty studio</p>
     </footer>
