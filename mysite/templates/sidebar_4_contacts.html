@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Контакты</title>
+    <link rel="stylesheet" href="">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fdfeff;
+      color: #333;
+      padding: 0px;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .widget-container {
+      width: 100%;
+      max-width: 680px;
+      border-radius: 20px; /* Закруглённые края */
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Мягкая тень */
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+    }
+
+    .widget-links {
+      padding: 16px 20px;
+      background-color: #f5f7fa;
+      border-bottom: 1px solid #eaeaea;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 14px;
+    }
+
+    .widget-links a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .widget-links a:hover {
+      color: #333;
+      text-decoration: underline;
+    }
+
+    .dg-widget-link {
+      margin: 0;
+    }
+
+    /* Стиль для iframe (карты) */
+    .dg-widget-container iframe {
+      border: none;
+      width: 100%;
+      height: 600px;
+      border-radius: 0 0 20px 20px; /* Закругление только снизу, если нужно */
+    }
+    
+    header {
+        background-color: #fff;
+        border-bottom: 1px solid #eee;
+        padding: 1rem 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header img {
+        height: 60px;
+        padding: 15px;
+    }
+</style>
+<body>
+    <header>
+        <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\logo.jpg" alt="LikeMe Logo">
+        <h1>LikeMe beauty studio</h1>
+    </header>
+  <div class="widget-container">
+    <!-- Ссылки над картой -->
+    <div class="widget-links">
+      <a href="http://2gis.ru/kemerovo/firm/70000001080339326/photos/70000001080339326/center/86.07480526014116,55.34579862672048/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos">
+        Фотографии компании
+      </a>
+      <a href="http://2gis.ru/kemerovo/center/86.073964,55.345195/zoom/16/routeTab/rsType/bus/to/86.073964,55.345195╎Like me, студия красоты?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">
+        Найти проезд
+      </a>
+    </div>
+
+    <!-- Виджет карты -->
+    <div class="dg-widget-container">
+      <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+      <script charset="utf-8">
+        new DGWidgetLoader({
+          "width": "100%",         // Адаптивная ширина
+          "height": 600,
+          "borderColor": "#e0e0e0",
+          "pos": {
+            "lat": 55.34579862672048,
+            "lon": 86.07480526014116,
+            "zoom": 16
+          },
+          "opt": {
+            "city": "kemerovo"
+          },
+          "org": [
+            { "id": "70000001080339326" }
+          ]
+        });
+      </script>
+    </div>
+
+    <noscript style="color:#c00; font-size:14px; padding: 16px; text-align:center;">
+      Виджет карты использует JavaScript. Включите его в настройках браузера.
+    </noscript>
+  </div>
+
+</body>
+</html>
