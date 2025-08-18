@@ -24,7 +24,7 @@
 
     .widget-container {
       width: 100%;
-      max-width: 680px;
+      max-width: 660px;
       border-radius: 20px; /* Закруглённые края */
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Мягкая тень */
@@ -67,25 +67,42 @@
       border-radius: 0 0 20px 20px; /* Закругление только снизу, если нужно */
     }
     
-    header {
-        background-color: #fff;
-        border-bottom: 1px solid #eee;
-        padding: 1rem 2rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
+  header {
+      background-color: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
 
-    header img {
-        height: 60px;
-        padding: 15px;
-    }
+  header img {
+      display: block;
+      height: 60px;
+      padding-left: 15px;
+      transition: filter 0.3s ease;
+      display: block;
+  }
+
+  .logo-container {
+      display: inline-block;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s ease; /* Плавный сдвиг */
+  }
+
+  .logo-container:hover {
+      transform: translateX(10px); /* Сдвиг влево */
+  }
 </style>
 <body>
-    <header>
-        <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\logo.jpg" alt="LikeMe Logo">
-        <h1>LikeMe beauty studio</h1>
-    </header>
+  <header>
+      <div class="logo-container" onclick="location.href='index.html'">
+          <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\logo.jpg" alt="LikeMe Logo">
+      </div>
+      <h1>LikeMe beauty studio</h1>
+  </header>
   <div class="widget-container">
     <!-- Ссылки над картой -->
     <div class="widget-links">
