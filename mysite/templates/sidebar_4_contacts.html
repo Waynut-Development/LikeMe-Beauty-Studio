@@ -30,6 +30,8 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Мягкая тень */
       background-color: #ffffff;
       border: 1px solid #e0e0e0;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .widget-links {
@@ -95,6 +97,46 @@
   .logo-container:hover {
       transform: translateX(10px); /* Сдвиг влево */
   }
+
+  .hero {
+      text-align: center;
+      padding: 40px;
+  }
+
+  h2 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #23272a;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+  }
+
+  p {
+      font-size: 1.5rem;
+      color: #333;
+      line-height: 1.6;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      font-weight: 400;
+  } 
+
+  footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+  }
+  
+  p2 {
+      font-size: 1.5rem;
+      color: #b3b3b3;
+      line-height: 1.6;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-weight: 400;
+  }
 </style>
 <body>
   <header>
@@ -103,6 +145,10 @@
       </div>
       <h1>LikeMe beauty studio</h1>
   </header>
+  <section class="hero">
+      <h2>Мы на связи</h2>
+      <p>Будем рады вашему визиту</p>
+  </section>
   <div class="widget-container">
     <!-- Ссылки над картой -->
     <div class="widget-links">
@@ -141,6 +187,8 @@
       Виджет карты использует JavaScript. Включите его в настройках браузера.
     </noscript>
   </div>
-
+  <footer>
+      <p2>&copy; 2025 LikeMe beauty studio</p2>
+  </footer>
 </body>
 </html>
