@@ -192,7 +192,7 @@
       transition: background-color 0.3s, transform 0.2s;
       box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
     }
- 
+
     .btn:hover {
       background-color: #c09f2e;
       transform: translateY(-2px);
