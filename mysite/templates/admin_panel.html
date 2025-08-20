@@ -1,10 +1,321 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Админ-панель</title>
+  <meta charset="UTF-8">
+  <title>Админ-панель расписания</title>
+  <style>
+    :root {
+      --primary: #d4af37;
+      --primary-light: #f9f5e8;
+      --dark: #333333;
+      --gray: #6b7280;
+      --white: #ffffff;
+      --text: #1f2937;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--primary-light);
+      margin: 0;
+      padding: 0;
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 30px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      margin: 20px 0 0;
+      font-size: 30px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 10px 18px;
+      background-color: var(--primary);
+      color: var(--white);
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .btn:hover {
+      background-color: #c09f2e;
+      transform: translateY(-2px);
+    }
+
+    .btn.active {
+      background-color: #b8962d;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      margin-top: 20px;
+      user-select: none; /* чтобы текст не выделялся */
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 6px;
+      min-width: 80px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    th {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    td.free {
+      background-color: #a7f3d0; /* зелёный */
+    }
+
+    td.busy {
+      background-color: #fde68a; /* жёлтый */
+    }
+
+    td.off {
+      background-color: #fecaca; /* красный */
+    }
+
+    .save-btn {
+      margin-top: 25px;
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background-color: var(--primary);
+      color: var(--white);
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+    }
+
+    .save-btn:hover {
+      background-color: #c09f2e;
+      transform: translateY(-2px);
+    }
+
+    .nav-controls {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      font-size: 20px;
+      padding: 6px 14px;
+      border-radius: 50%;
+      line-height: 1;
+    }
+  </style>
 </head>
 <body>
-    <h2>Расписание мастера</h2>
-    <p>Функция в разработке. Здесь будет доступность по датам и возможность пометить занятость.</p>
+  <div class="container">
+    <div class="header">
+      <h1>Админ-панель расписания</h1>
+      <p>Выбирайте период и отмечайте статусы</p>
+    </div>
+
+    <!-- Кнопки выбора периода -->
+    <div class="controls">
+      <button class="btn period-btn active" data-period="day">День</button>
+      <button class="btn period-btn" data-period="week">Неделя</button>
+    </div>
+
+    <!-- Навигация по датам -->
+    <div class="nav-controls">
+      <button class="btn nav-btn" id="prev-btn">⟨</button>
+      <span id="date-range"></span>
+      <button class="btn nav-btn" id="next-btn">⟩</button>
+    </div>
+
+    <!-- Кнопки статусов -->
+    <div class="controls">
+      <button class="btn status-btn" data-status="free">Свободно</button>
+      <button class="btn status-btn" data-status="busy">Занято</button>
+      <button class="btn status-btn" data-status="off">Не рабочий период</button>
+    </div>
+
+    <!-- Таблица -->
+    <div id="table-container"></div>
+
+    <!-- Сохранить -->
+    <button class="save-btn">Сохранить изменения</button>
+  </div>
+
+  <script>
+    const tableContainer = document.getElementById('table-container');
+    const periodButtons = document.querySelectorAll('.period-btn');
+    const statusButtons = document.querySelectorAll('.status-btn');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const dateRange = document.getElementById('date-range');
+
+    let currentStatus = null;
+    let currentPeriod = 'day';
+    let offset = 0;
+    let isMouseDown = false;
+
+    // генерация массива дат
+    function getDates(period, offset) {
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      let startDate = new Date(today);
+      if (period === 'day') {
+        startDate.setDate(today.getDate() + offset);
+        return [startDate];
+      }
+      if (period === 'week') {
+        startDate.setDate(today.getDate() + offset * 7);
+        return Array.from({length: 7}, (_, i) => {
+          let d = new Date(startDate);
+          d.setDate(startDate.getDate() + i);
+          return d;
+        });
+      }
+    }
+
+    // генерация часов (07:00 – 02:00 следующего дня)
+    function getTimes() {
+      let times = [];
+      for (let h = 7; h < 24; h++) {
+        times.push(`${String(h).padStart(2,'0')}:00`);
+        times.push(`${String(h).padStart(2,'0')}:30`);
+      }
+      for (let h = 0; h < 2; h++) {
+        times.push(`${String(h).padStart(2,'0')}:00`);
+        times.push(`${String(h).padStart(2,'0')}:30`);
+      }
+      return times;
+    }
+
+    function formatDate(d) {
+      return d.toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit' });
+    }
+
+    function generateTable(period='day', offset=0) {
+      const dates = getDates(period, offset);
+      const times = getTimes();
+
+      // заголовок даты
+      if (period === 'day') {
+        dateRange.textContent = formatDate(dates[0]);
+      } else {
+        dateRange.textContent = `${formatDate(dates[0])} - ${formatDate(dates[dates.length-1])}`;
+      }
+
+      let html = '<table><thead><tr><th>Время</th>';
+      dates.forEach(d => {
+        html += `<th>${formatDate(d)}</th>`;
+      });
+      html += '</tr></thead><tbody>';
+
+      times.forEach(time => {
+        html += `<tr><td>${time}</td>`;
+        dates.forEach(() => {
+          html += `<td></td>`;
+        });
+        html += '</tr>';
+      });
+
+      html += '</tbody></table>';
+      tableContainer.innerHTML = html;
+
+      // клики и drag выделение
+      const cells = document.querySelectorAll('#table-container td');
+      cells.forEach(cell => {
+        cell.addEventListener('mousedown', () => {
+          if (currentStatus) {
+            if (cell.classList.contains(currentStatus)) {
+              cell.className = '';
+            } else {
+              cell.className = currentStatus;
+            }
+            isMouseDown = true;
+          }
+        });
+
+        cell.addEventListener('mouseover', () => {
+          if (isMouseDown && currentStatus) {
+            if (cell.classList.contains(currentStatus)) {
+              cell.className = '';
+            } else {
+              cell.className = currentStatus;
+            }
+          }
+        });
+      });
+
+      document.addEventListener('mouseup', () => {
+        isMouseDown = false;
+      });
+    }
+
+    // Переключение периода
+    periodButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        periodButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentPeriod = btn.dataset.period;
+        offset = 0;
+        generateTable(currentPeriod, offset);
+      });
+    });
+
+    // Выбор статуса
+    statusButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        statusButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentStatus = btn.dataset.status;
+      });
+    });
+
+    // Листание
+    prevBtn.addEventListener('click', () => {
+      offset -= (currentPeriod === 'day' ? 1 : 1);
+      generateTable(currentPeriod, offset);
+    });
+    nextBtn.addEventListener('click', () => {
+      offset += (currentPeriod === 'day' ? 1 : 1);
+      generateTable(currentPeriod, offset);
+    });
+
+    // Изначально день
+    generateTable('day', 0);
+  </script>
 </body>
 </html>
