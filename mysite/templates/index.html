@@ -415,7 +415,8 @@
 
         </div>
         <div class="sidebar-footer">
-            <button href="booking.html">Запись на услугу</button>
+            <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
+            <button onclick="window.location.href='booking.html'">Запись на услугу</button>
         </div>
     </div>
 <!-- Отступ -->
@@ -480,6 +481,12 @@
 
     <footer>
         <p2>&copy; 2025 LikeMe beauty studio</p2>
+          <p style="font-size: 18px; margin-bottom: 12px;">
+    <span style="color: #e53935;">Телефон:</span> +7 923 629-47-97
+  </p>
+  <p style="font-size: 18px;">
+    <span style="color: #e53935;">E-mail:</span> localbarber@bk.ru
+  </p>
     </footer>
         <script>
         const hamburgerBtn = document.getElementById('hamburgerBtn');
