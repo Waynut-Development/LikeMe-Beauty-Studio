@@ -19,8 +19,8 @@ def home():
 
 
 # Обработчик кнопки
-@app.route('/process', methods=['POST'])
-def process():
+@app.route('/testper', methods=['POST'])
+def testper():
     return redirect(url_for('success'))
 
 # Страница после обработки
