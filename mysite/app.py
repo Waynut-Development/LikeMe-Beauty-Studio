@@ -19,8 +19,8 @@ def home():
 
 
 # Обработчик кнопки
-@app.route('/record', methods=['POST'])
-def record():
+@app.route('/process', methods=['POST'])
+def process():
     return redirect(url_for('success'))
 
 # Страница после обработки
@@ -31,7 +31,7 @@ def success():
 # Страница "О нас"
 @app.route('/about')
 def about():
-    return render_template('sidebar_1_about us.html')
+    return render_template('about.html')
 
 # Страница "Контакты"
 @app.route('/contacts')
