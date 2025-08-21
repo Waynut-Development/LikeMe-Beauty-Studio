@@ -1,10 +1,433 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Админ-панель</title>
-</head>
-<body>
-    <h2>Расписание мастера</h2>
-    <p>Функция в разработке. Здесь будет доступность по датам и возможность пометить занятость.</p>
-</body>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админ-панель расписания</title>
+    <style>
+      :root {
+        --primary: #d4af37;
+        --primary-light: #f9f5e8;
+        --dark: #333333;
+        --white: #ffffff;
+        --text: #1f2937;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--primary-light);
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+        background: var(--white);
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      .header h1 {
+        margin: 10px 0 0;
+        font-size: 26px;
+        color: var(--primary);
+        font-weight: 600;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 10px 16px;
+        background-color: var(--primary);
+        color: var(--white);
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+        font-size: 14px;
+      }
+      .btn:hover {
+        background-color: #c09f2e;
+        transform: translateY(-2px);
+      }
+      .btn.active {
+        background-color: #b8962d;
+      }
+
+      .nav-row {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+      }
+      .date-range {
+        font-weight: 600;
+        color: var(--dark);
+        min-width: 160px;
+        text-align: center;
+      }
+
+      .table-wrapper {
+        width: 100%;
+        overflow-x: auto; /* горизонтальная прокрутка на мобильных */
+        -webkit-overflow-scrolling: touch;
+        border-radius: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        font-size: 14px;
+        user-select: none; /* исключаем выделение текста при «рисовании» */
+        touch-action: pan-x; /* разрешаем горизонтальный скролл, блокируем вертикальный во время жестов */
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 6px;
+        min-width: 70px;
+      }
+
+      th {
+        background: var(--primary);
+        color: var(--white);
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .time-cell {
+        background: #faf7ec;
+        font-weight: 600;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+      }
+
+      td.paintable {
+        cursor: pointer;
+      }
+
+      /* статусы */
+      td.free {
+        background-color: #a7f3d0;
+      } /* зелёный */
+      td.busy {
+        background-color: #fde68a;
+      } /* жёлтый */
+      td.off {
+        background-color: #fecaca;
+      } /* красный */
+
+      .save-btn {
+        margin-top: 16px;
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: var(--primary);
+        color: var(--white);
+        font-size: 16px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+      }
+      .save-btn:hover {
+        background-color: #c09f2e;
+        transform: translateY(-2px);
+      }
+
+      /* Адаптивность */
+      @media (max-width: 768px) {
+        .header h1 {
+          font-size: 22px;
+        }
+        .btn {
+          font-size: 13px;
+          padding: 8px 12px;
+        }
+        table {
+          font-size: 12px;
+        }
+        th,
+        td {
+          min-width: 60px;
+          padding: 5px;
+        }
+      }
+      @media (max-width: 480px) {
+        .controls {
+          flex-direction: column;
+        }
+        .btn {
+          width: 100%;
+        }
+        .date-range {
+          min-width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Админ-панель расписания</h1>
+        <p>Управляйте расписанием с любого устройства</p>
+      </div>
+
+      <!-- Период -->
+      <div class="controls">
+        <button class="btn period-btn active" data-period="day">День</button>
+        <button class="btn period-btn" data-period="week">Неделя</button>
+      </div>
+
+      <!-- Статусы -->
+      <div class="controls">
+        <button class="btn status-btn" data-status="free">Свободно</button>
+        <button class="btn status-btn" data-status="busy">Занято</button>
+        <button class="btn status-btn" data-status="off">Не рабочий</button>
+      </div>
+
+      <!-- Навигация -->
+      <div class="nav-row">
+        <button class="btn nav-btn" data-dir="prev">⟨</button>
+        <div class="date-range" id="date-range"></div>
+        <button class="btn nav-btn" data-dir="next">⟩</button>
+      </div>
+
+      <!-- Таблица -->
+      <div class="table-wrapper">
+        <div id="table-container"></div>
+      </div>
+
+      <!-- Сохранить -->
+      <button class="save-btn">Сохранить изменения</button>
+    </div>
+
+    <script>
+      const tableContainer = document.getElementById("table-container");
+      const periodButtons = document.querySelectorAll(".period-btn");
+      const statusButtons = document.querySelectorAll(".status-btn");
+      const navButtons = document.querySelectorAll(".nav-btn");
+      const dateRangeEl = document.getElementById("date-range");
+
+      let currentStatus = null;
+      let startDate = new Date();
+      startDate.setHours(0, 0, 0, 0);
+
+      let painting = false; // идёт ли «рисование»
+      let paintMode = "apply"; // 'apply' | 'erase'
+
+      // Часы 07:00 → 02:00 (без 02:30)
+      function getTimes() {
+        const times = [];
+        for (let h = 7; h < 24; h++) {
+          times.push(`${String(h).padStart(2, "0")}:00`);
+          times.push(`${String(h).padStart(2, "0")}:30`);
+        }
+        for (let h = 0; h < 2; h++) {
+          // 00:00..01:30
+          times.push(`${String(h).padStart(2, "0")}:00`);
+          times.push(`${String(h).padStart(2, "0")}:30`);
+        }
+        times.push("02:00"); // завершаем в 02:00
+        return times;
+      }
+
+      function formatDate(d) {
+        return d.toLocaleDateString("ru-RU", {
+          day: "2-digit",
+          month: "2-digit",
+        });
+      }
+
+      function getDates(period) {
+        const base = new Date(startDate);
+        base.setHours(0, 0, 0, 0);
+        if (period === "day") return [base];
+
+        // week
+        return Array.from({ length: 7 }, (_, i) => {
+          const d = new Date(base);
+          d.setDate(base.getDate() + i);
+          return d;
+        });
+      }
+
+      function setDateRangeText(dates) {
+        if (dates.length === 1) {
+          dateRangeEl.textContent = formatDate(dates[0]);
+        } else {
+          dateRangeEl.textContent = `${formatDate(dates[0])} — ${formatDate(
+            dates[dates.length - 1]
+          )}`;
+        }
+      }
+
+      function clearStatuses(cell) {
+        cell.classList.remove("free", "busy", "off");
+      }
+
+      function applyStatus(cell) {
+        if (!currentStatus) return;
+        clearStatuses(cell);
+        cell.classList.add(currentStatus);
+      }
+
+      function eraseStatus(cell) {
+        clearStatuses(cell);
+      }
+
+      function toggleOnce(cell) {
+        if (!currentStatus) return;
+        if (cell.classList.contains(currentStatus)) {
+          eraseStatus(cell);
+        } else {
+          applyStatus(cell);
+        }
+      }
+
+      // Рисование по ячейкам (Pointer Events для мобильных и десктопа)
+      function attachPaintHandlers(tableEl) {
+        const cells = tableEl.querySelectorAll("td.paintable");
+
+        function handlePointerDown(e) {
+          const cell = e.target.closest("td.paintable");
+          if (!cell || !currentStatus) return;
+
+          // Определяем режим кисти: красим или стираем
+          paintMode = cell.classList.contains(currentStatus)
+            ? "erase"
+            : "apply";
+          painting = true;
+
+          if (paintMode === "apply") applyStatus(cell);
+          else eraseStatus(cell);
+
+          cell.setPointerCapture?.(e.pointerId);
+          e.preventDefault();
+        }
+
+        function handlePointerEnter(e) {
+          if (!painting) return;
+          const cell = e.target.closest("td.paintable");
+          if (!cell) return;
+          if (paintMode === "apply") applyStatus(cell);
+          else eraseStatus(cell);
+        }
+
+        function handlePointerOver(e) {
+          // подстраховка для некоторых мобильных браузеров
+          if (!painting) return;
+          const cell = e.target.closest("td.paintable");
+          if (!cell) return;
+          if (paintMode === "apply") applyStatus(cell);
+          else eraseStatus(cell);
+        }
+
+        function handlePointerUp() {
+          painting = false;
+        }
+
+        // Назначаем обработчики на саму таблицу (делегирование)
+        tableEl.addEventListener("pointerdown", handlePointerDown);
+        tableEl.addEventListener("pointerenter", handlePointerEnter, true);
+        tableEl.addEventListener("pointerover", handlePointerOver, true);
+        window.addEventListener("pointerup", handlePointerUp);
+      }
+
+      function generateTable(period = "day") {
+        const dates = getDates(period);
+        const times = getTimes();
+
+        setDateRangeText(dates);
+
+        let html = '<table><thead><tr><th class="time-cell">Время</th>';
+        dates.forEach((d) => {
+          html += `<th>${formatDate(d)}</th>`;
+        });
+        html += "</tr></thead><tbody>";
+
+        times.forEach((time) => {
+          html += `<tr><td class="time-cell">${time}</td>`;
+          dates.forEach(() => {
+            html += `<td class="paintable"></td>`;
+          });
+          html += "</tr>";
+        });
+
+        html += "</tbody></table>";
+        tableContainer.innerHTML = html;
+
+        const tableEl = tableContainer.querySelector("table");
+        attachPaintHandlers(tableEl);
+
+        // Обычный «тап» по ячейке
+        tableEl.addEventListener(
+          "click",
+          (e) => {
+            const cell = e.target.closest("td.paintable");
+            if (!cell) return;
+            toggleOnce(cell);
+          },
+          { passive: true }
+        );
+      }
+
+      // Переключение периода
+      periodButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          periodButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          const period = btn.dataset.period;
+          generateTable(period);
+        });
+      });
+
+      // Выбор статуса
+      statusButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          statusButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          currentStatus = btn.dataset.status;
+        });
+      });
+
+      // Навигация (день: ±1, неделя: ±7)
+      navButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const period =
+            document.querySelector(".period-btn.active").dataset.period;
+          const shift = period === "day" ? 1 : 7;
+          const dir = btn.dataset.dir === "next" ? 1 : -1;
+          startDate.setDate(startDate.getDate() + dir * shift);
+          generateTable(period);
+        });
+      });
+
+      // Инициализация
+      generateTable("day");
+    </script>
+  </body>
 </html>

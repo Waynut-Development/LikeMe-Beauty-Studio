@@ -1,325 +1,350 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Запись на прием</title>
-<style>/*я не знаю какой шрифт выбрать*/
-  * { font-family: 'Segoe UI', sans-serif; } 
-    :root {
-      --primary: #d4af37;       
-      --primary-light: #f9f5e8; 
-      --dark: #333333;          
-      --gray: #6b7280;          
-      --white: #ffffff;         
-      --text: #1f2937;          
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Запись на прием</title>
+    <style>
+      /*я не знаю какой шрифт выбрать*/
+      * {
+        font-family: "Segoe UI", sans-serif;
+      }
+      :root {
+        --primary: #d4af37;
+        --primary-light: #f9f5e8;
+        --dark: #333333;
+        --gray: #6b7280;
+        --white: #ffffff;
+        --text: #1f2937;
+      }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--primary-light);
-      margin: 0;
-      padding: 0;
-      color: var(--text);
-    }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--primary-light);
+        margin: 0;
+        padding: 0;
+        color: var(--text);
+      }
 
-    .container {
-      position: relative;
-      max-width: 600px;
-      margin: 40px auto;
-      padding: 30px;
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
-    }
+      .container {
+        position: relative;
+        max-width: 600px;
+        margin: 40px auto;
+        padding: 30px;
+        background: var(--white);
+        border-radius: 14px;
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
+      }
 
-    .close-btn {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      width: auto;
-      height: auto;
-      color: var(--primary);
-      font-weight: bold;
-      font-size: 24px;
-      background-color: transparent;
-      border: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: color 0.3s ease, transform 0.2s ease;
-      cursor: pointer;
-      line-height: 1;
-      text-decoration: none;
-    }
+      .close-btn {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        width: auto;
+        height: auto;
+        color: var(--primary);
+        font-weight: bold;
+        font-size: 24px;
+        background-color: transparent;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 0.3s ease, transform 0.2s ease;
+        cursor: pointer;
+        line-height: 1;
+        text-decoration: none;
+      }
 
-    .close-btn:hover {
-      color: #c09f2e;
-      transform: translateY(-1px);
-    }
+      .close-btn:hover {
+        color: #c09f2e;
+        transform: translateY(-1px);
+      }
 
-    .top-right-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      padding: 7px 10px;
-      background-color: var(--primary);
-      color: var(--white);
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 14px;
-      border-radius: 8px;
-      box-shadow: 0 3px 8px rgba(212, 175, 55, 0.3);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-    }
+      .top-right-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        padding: 7px 10px;
+        background-color: var(--primary);
+        color: var(--white);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(212, 175, 55, 0.3);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
 
-    .top-right-btn:hover {
-      background-color: #c09f2e;
-      transform: translateY(-1px);
-    }
+      .top-right-btn:hover {
+        background-color: #c09f2e;
+        transform: translateY(-1px);
+      }
 
-    .header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
 
-    .header h1 {
-      margin: 20px 0 0;
-      font-size: 30px;
-      color: var(--primary);
-      font-weight: 600;
-    }
+      .header h1 {
+        margin: 20px 0 0;
+        font-size: 30px;
+        color: var(--primary);
+        font-weight: 600;
+      }
 
-    .header p {
-      margin: 5px 0 0;
-      color: var(--gray);
-      font-size: 16px;
-    }
+      .header p {
+        margin: 5px 0 0;
+        color: var(--gray);
+        font-size: 16px;
+      }
 
-    
-    .btns_for_selection {
-      display: block;
-      width: 95%;
-      padding: 16px;
-      background-color: var(--primary);
-      color: var(--white);
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-      transition: background-color 0.3s, transform 0.2s;
-      margin-bottom: 16px; 
-    }
+      .btns_for_selection {
+        display: block;
+        width: 95%;
+        padding: 16px;
+        background-color: var(--primary);
+        color: var(--white);
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+        transition: background-color 0.3s, transform 0.2s;
+        margin-bottom: 16px;
+      }
 
-    .btns_for_selection:last-child {
-      margin-bottom: 0;
-    }
+      .btns_for_selection:last-child {
+        margin-bottom: 0;
+      }
 
-    .btns_for_selection:hover {
-      background-color: #c09f2e;
-      transform: translateY(-2px);
-    }
+      .btns_for_selection:hover {
+        background-color: #c09f2e;
+        transform: translateY(-2px);
+      }
 
-    .buttons-container {
-      display: flex;
-      flex-direction: column;
-      gap: 12px; 
-    }
+      .buttons-container {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
 
-    
-    .booking-form {
-      margin-top: 20px;
-    }
+      .booking-form {
+        margin-top: 20px;
+      }
 
-    .form-group {
-      margin-bottom: 22px;
-    }
+      .form-group {
+        margin-bottom: 22px;
+      }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: var(--dark);
-    }
+      label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: var(--dark);
+      }
 
-    .form-control {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      color: var(--text);
-      background-color: var(--white);
-      box-sizing: border-box;
-      transition: border-color 0.3s, box-shadow 0.3s;
-    }
+      .form-control {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+        color: var(--text);
+        background-color: var(--white);
+        box-sizing: border-box;
+        transition: border-color 0.3s, box-shadow 0.3s;
+      }
 
-    .form-control:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-    }
+      .form-control:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+      }
 
-    .select-wrapper {
-      position: relative;
-    }
+      .select-wrapper {
+        position: relative;
+      }
 
-    .select-wrapper::after {
-      content: '▼';
-      font-size: 10px;
-      color: var(--gray);
-      position: absolute;
-      right: 14px;
-      top: 50%;
-      transform: translateY(-50%);
-      pointer-events: none;
-      opacity: 0.7;
-    }
+      .select-wrapper::after {
+        content: "▼";
+        font-size: 10px;
+        color: var(--gray);
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        opacity: 0.7;
+      }
 
-    select.form-control {
-      appearance: none;
-      -webkit-appearance: none;
-      background: transparent;
-    }
+      select.form-control {
+        appearance: none;
+        -webkit-appearance: none;
+        background: transparent;
+      }
 
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 14px;
-      background-color: var(--primary);
-      color: var(--white);
-      font-size: 18px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-    }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 14px;
+        background-color: var(--primary);
+        color: var(--white);
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, transform 0.2s;
+        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
+      }
 
-    .btn:hover {
-      background-color: #c09f2e;
-      transform: translateY(-2px);
-    }
+      .btn:hover {
+        background-color: #c09f2e;
+        transform: translateY(-2px);
+      }
 
-    .success-message {
-      display: none;
-      text-align: center;
-      font-size: 18px;
-      color: var(--primary);
-      margin-top: 25px;
-      padding: 18px;
-      background-color: var(--primary-light);
-      border: 1px solid #e6d8a8;
-      border-radius: 10px;
-      font-weight: 500;
-    }
-  </style>
-  {% comment %} <link rel="stylesheet" href="/static/css/style1.css"> {% endcomment %}
-</head>
-<body>
+      .success-message {
+        display: none;
+        text-align: center;
+        font-size: 18px;
+        color: var(--primary);
+        margin-top: 25px;
+        padding: 18px;
+        background-color: var(--primary-light);
+        border: 1px solid #e6d8a8;
+        border-radius: 10px;
+        font-weight: 500;
+      }
+    </style>
 
-  <div class="container">
+    <link rel="stylesheet" href="/static/css/style1.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="close-btn" onclick="window.history.back()">×</div>
+      <a href="canceling or rescheduling.html" class="top-right-btn"
+        >Отменить или перенести</a
+      >
 
-    <div class="close-btn" onclick="window.history.back()">×</div>
-    <a href="canceling or rescheduling.html" class="top-right-btn">Отменить или перенести</a>
+      <div class="header">
+        <h1>Запись на прием</h1>
+        <p>Заполните форму для записи на услугу</p>
+      </div>
 
-    <div class="header">
-      <h1>Запись на прием</h1>
-      <p>Заполните форму для записи на услугу</p>
+      <section class="booking-form">
+        <form action="/book" method="POST" id="appointment-form" class="form">
+          <div class="form-group">
+            <label for="name">Имя и фамилия</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              placeholder="Введите ваше имя"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Номер телефона</label>
+            <input
+              type="tel"
+              id="phone"
+              class="form-control"
+              placeholder="+7 (___) ___-__-__"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="service">Услуга</label>
+            <div class="select-wrapper">
+              <select id="service" class="form-control" required>
+                <option value="" disabled selected>Выберите услугу</option>
+                <option value="haircut_woman">Стрижка женская</option>
+                <option value="haircut_man">Стрижка мужская</option>
+                <option value="haircut_child">Стрижка детская</option>
+                <option value="coloring">Окрашивание волос</option>
+                <option value="complex_coloring">Сложное окрашивание</option>
+                <option value="highlighting">Мелирование волос</option>
+                <option value="grey_cover_men">
+                  Камуфлирование седины волос (мужское)
+                </option>
+                <option value="grey_cover_beard">
+                  Камуфлирование + стрижка бороды
+                </option>
+                <option value="beard_trim">Стрижка бороды</option>
+                <option value="foam_massage">Пенный массаж головы</option>
+                <option value="scalp_peeling">Пилинг кожи головы</option>
+                <option value="styling_woman">Укладка женская</option>
+                <option value="styling_man">Укладка мужская</option>
+                <option value="hair_wash">Мытьё головы</option>
+                <option value="wax_removal">
+                  Удаление волос воском (уши, нос, меж бровка)
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Дата</label>
+            <input type="date" id="date" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label for="time">Время</label>
+            <div class="select-wrapper">
+              <select id="time" class="form-control" required>
+                <option value="" disabled selected>Выберите время</option>
+                <option value="09:00">09:00</option>
+                <option value="10:00">10:00</option>
+                <option value="11:00">11:00</option>
+                <option value="12:00">12:00</option>
+                <option value="13:00">13:00</option>
+                <option value="14:00">14:00</option>
+                <option value="15:00">15:00</option>
+                <option value="16:00">16:00</option>
+                <option value="17:00">17:00</option>
+                <option value="18:00">18:00</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Записаться</button>
+        </form>
+      </section>
+
+      <div id="success-message" class="success-message">
+        Спасибо! Для подтверждения записи нужно подтвердить номер телефона!
+      </div>
     </div>
 
-    <section class="booking-form">
-      <form action="/book" method="POST" id="appointment-form" class="form">
-        <div class="form-group">
-          <label for="name">Имя и фамилия</label>
-          <input type="text" id="name" class="form-control" placeholder="Введите ваше имя" required>
-        </div>
-      
-        <div class="form-group">
-          <label for="phone">Номер телефона</label>
-          <input type="tel" id="phone" class="form-control" placeholder="+7 (___) ___-__-__" required>
-        </div>
-      
-        <div class="form-group">
-          <label for="service">Услуга</label>
-          <div class="select-wrapper">
-            <select id="service" class="form-control" required>
-              <option value="" disabled selected>Выберите услугу</option>
-              <option value="haircut">Стрижка</option>
-              <option value="coloring">Окрашивание</option>
-              <option value="manicure">Маникюр</option>
-              <option value="pedicure">Педикюр</option>
-              <option value="massage">Массаж</option>
-              <option value="consultation">Консультация</option>
-            </select>
-          </div>
-        </div>
-      
-        <div class="form-group">
-          <label for="date">Дата</label>
-          <input type="date" id="date" class="form-control" required>
-        </div>
-      
-        <div class="form-group">
-          <label for="time">Время</label>
-          <div class="select-wrapper">
-            <select id="time" class="form-control" required>
-              <option value="" disabled selected>Выберите время</option>
-              <option value="09:00">09:00</option>
-              <option value="10:00">10:00</option>
-              <option value="11:00">11:00</option>
-              <option value="12:00">12:00</option>
-              <option value="13:00">13:00</option>
-              <option value="14:00">14:00</option>
-              <option value="15:00">15:00</option>
-              <option value="16:00">16:00</option>
-              <option value="17:00">17:00</option>
-              <option value="18:00">18:00</option>
-            </select>
-          </div>
-        </div>
-      
-        <button type="submit" class="btn">Записаться</button>
-      </form>
-    </section>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const today = new Date().toISOString().split("T")[0];
+        document.getElementById("date").min = today;
 
-    <div id="success-message" class="success-message">
-      Спасибо! Для подтверждения записи нужно подтвердить номер телефона!
-    </div>
+        const form = document.getElementById("appointment-form");
+        const successMessage = document.getElementById("success-message");
 
-  </div>
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      
-      const today = new Date().toISOString().split('T')[0];
-      document.getElementById('date').min = today;
-      
-      const form = document.getElementById('appointment-form');
-      const successMessage = document.getElementById('success-message');
-      
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        console.log('Форма отправлена:', {
-          name: document.getElementById('name').value,
-          phone: document.getElementById('phone').value,
-          service: document.getElementById('service').value,
-          date: document.getElementById('date').value,
-          time: document.getElementById('time').value
+          console.log("Форма отправлена:", {
+            name: document.getElementById("name").value,
+            phone: document.getElementById("phone").value,
+            service: document.getElementById("service").value,
+            date: document.getElementById("date").value,
+            time: document.getElementById("time").value,
+          });
+
+          form.style.display = "none";
+          successMessage.style.display = "block";
         });
-        
-
-        form.style.display = 'none';
-        successMessage.style.display = 'block';
       });
-    });
-  </script>
-
-</body>
+    </script>
+  </body>
 </html>
