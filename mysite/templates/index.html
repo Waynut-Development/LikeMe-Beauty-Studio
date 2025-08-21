@@ -372,11 +372,9 @@
   </style>
   <body>
     <header>
-      <div class="logo-container" onclick="location.href='index.html'">
-        <img
-          src="LikeMe-Beauty-Studio\mysite\static\images\logo.jpg"
-          alt="LikeMe Logo"
-        />
+      <div class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo.jpg') }}" 
+      alt="LikeMe Logo">
       </div>
       <h1>LikeMe beauty studio</h1>
     </header>
@@ -425,7 +423,7 @@
             class="menu-icon"
             viewBox="0 0 24 24"
             img
-            src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\beard-trimming.png"
+            src="{{ url_for('static', filename='images/hair-straightener.png') }}"
           />
           <span class="menu-text">Примеры работ</span>
         </div>
@@ -481,7 +479,7 @@
       <!-- Карточка 1 -->
       <div class="card">
         <img
-          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\smartphone.png"
+          src="{{ url_for('static', filename='images/smartphone.png') }}"
           alt="Online"
           class="card-image"
         />
@@ -494,7 +492,7 @@
       <!-- Карточка 2 -->
       <div class="card">
         <img
-          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\cosmetics.png"
+          src="{{ url_for('static', filename='images/cosmetics.png') }}"
           alt="Online"
           class="card-image"
         />
@@ -507,7 +505,7 @@
       <!-- Карточка 3 -->
       <div class="card">
         <img
-          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\appreciation.png"
+          src="{{ url_for('static', filename='images/appreciation.png') }}"
           alt="Online"
           class="card-image"
         />
