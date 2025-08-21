@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LikeMe beauty studio</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-</head>
-<style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       background: #f5f5f5;
       color: #333;
       margin: 0;
       padding: 0;
       height: 100vh;
-  }
+    }
 
-/* Отступ */
-  .hamburger-btn {
+    /* Отступ */
+    .hamburger-btn {
       position: fixed;
       top: 20px;
       left: 20px;
@@ -40,34 +40,34 @@
       z-index: 100;
       transition: all 0.3s ease;
       padding: 5px;
-  }
+    }
 
-  .hamburger-btn:hover {
+    .hamburger-btn:hover {
       background: #f0f0f0;
-  }
+    }
 
-  .hamburger-btn span {
+    .hamburger-btn span {
       width: 70%;
       height: 3px;
       background: #333;
       margin: 3px 0;
       transition: all 0.3s ease;
       border-radius: 2px;
-  }
+    }
 
-  .hamburger-btn.active span:nth-child(1) {
+    .hamburger-btn.active span:nth-child(1) {
       transform: rotate(45deg) translate(5px, 5px);
-  }
+    }
 
-  .hamburger-btn.active span:nth-child(2) {
+    .hamburger-btn.active span:nth-child(2) {
       opacity: 0;
-  }
+    }
 
-  .hamburger-btn.active span:nth-child(3) {
+    .hamburger-btn.active span:nth-child(3) {
       transform: rotate(-45deg) translate(5px, -5px);
-  }
+    }
 
-  .sidebar {
+    .sidebar {
       position: fixed;
       top: 0;
       left: -25%;
@@ -82,52 +82,52 @@
       border-bottom-right-radius: 20px;
       display: flex;
       flex-direction: column;
-  }
+    }
 
-  .sidebar.active {
+    .sidebar.active {
       left: 0;
-  }
+    }
 
-  .sidebar-menu {
+    .sidebar-menu {
       flex: 1;
       padding: 40px 20px;
-  }
+    }
 
-  .menu-item {
+    .menu-item {
       display: flex;
       align-items: center;
       padding: 15px 0;
       margin-bottom: 0px;
       cursor: pointer;
       transition: all 0.3s ease;
-  }
+    }
 
-  .menu-item:hover {
+    .menu-item:hover {
       color: #ffcb00;
       transform: translateX(5px);
-  }
+    }
 
-  .menu-icon {
+    .menu-icon {
       width: 24px;
       height: 24px;
       margin-right: 15px;
       fill: #333;
       stroke: #333;
       stroke-width: 1.5;
-  }
+    }
 
-  .menu-text {
+    .menu-text {
       font-size: 16px;
       color: #333;
       font-weight: 500;
-  }
+    }
 
-  .sidebar-footer {
+    .sidebar-footer {
       padding: 20px;
       border-top: 1px solid #eee;
-  }
+    }
 
-  .sidebar-footer button {
+    .sidebar-footer button {
       display: block;
       width: 100%;
       padding: 15px;
@@ -139,15 +139,15 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
-  }
+    }
 
-  .sidebar-footer button:hover {
+    .sidebar-footer button:hover {
       background: #ffcb00;
       transform: scale(1.02);
-  }
+    }
 
-  /* Overlay for background when sidebar is open */
-  .overlay {
+    /* Overlay for background when sidebar is open */
+    .overlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -158,15 +158,15 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.5s ease;
-  }
+    }
 
-  .overlay.active {
+    .overlay.active {
       opacity: 1;
       visibility: visible;
-  }
-/* Отступ */
+    }
+    /* Отступ */
 
-/* Отступ */
+    /* Отступ */
     .cards-container {
       display: flex;
       gap: 30px;
@@ -216,210 +216,237 @@
       height: 90px;
       object-fit: cover;
     }
-/* Отступ */
+    /* Отступ */
 
-  section {
+    section {
       padding: 40px 20px;
-  }
+    }
 
-  h2 {
+    h2 {
       font-size: 5rem;
       font-weight: 700;
       line-height: 1.2;
       color: #2b3134;
       margin-bottom: 30px;
       letter-spacing: -0.02em;
-  }
+    }
 
-  .gallery {
+    .gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 20px;
-  }
+    }
 
-  .work-card {
+    .work-card {
       width: 200px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       background: white;
       border-radius: 8px;
       overflow: hidden;
       transition: transform 0.2s ease;
       text-align: center;
-  }
+    }
 
-  .work-card:hover {
+    .work-card:hover {
       transform: scale(1.05);
-  }
+    }
 
-  .work-card img {
+    .work-card img {
       width: 100%;
       height: auto;
       display: block;
-  }
+    }
 
-  a {
-  font-family: 'Roboto', 'Segoe UI', sans-serif;
-        text-decoration: none;
-        background: #ffcb00;
-        color: white;
-        border: none;
-        padding: 12px 20px;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 500;
-        width: 100px;
-        position: relative;
-        align-items: center;
-        display: block;
-        justify-content: center;
-        margin: 0 auto;
-        text-align: center;
-  }
-  
-  header {
+    a {
+      font-family: "Roboto", "Segoe UI", sans-serif;
+      text-decoration: none;
+      background: #ffcb00;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      width: 100px;
+      position: relative;
+      align-items: center;
+      display: block;
+      justify-content: center;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    header {
       background-color: #fff;
       border-bottom: 1px solid #eee;
       padding: 1rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-  }
+    }
 
-  header img {
+    header img {
       display: block;
       height: 60px;
       padding-left: 45px;
       transition: filter 0.3s ease;
       display: block;
-  }
+    }
 
-  .logo-container {
+    .logo-container {
       display: inline-block;
       position: relative;
       cursor: pointer;
       overflow: hidden;
       transition: transform 0.3s ease; /* Плавный сдвиг */
-  }
+    }
 
-  .logo-container:hover {
+    .logo-container:hover {
       transform: translateX(10px); /* Сдвиг влево */
-  }
+    }
 
-  .hero {
+    .hero {
       text-align: center;
       padding: 40px;
-  }
+    }
 
-  p {
+    p {
       font-size: 1.5rem;
       color: #333;
       line-height: 1.6;
       margin-top: 20px;
       margin-bottom: 20px;
       font-weight: 400;
-  }
+    }
 
-  p2 {
+    p2 {
       font-size: 1.5rem;
       color: #b3b3b3;
       line-height: 1.6;
       margin-top: 20px;
       margin-bottom: 20px;
       font-weight: 400;
-  }
+    }
 
-  .gallery {
+    .gallery {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       padding: 2rem;
       gap: 1rem;
-  }
+    }
 
-  .gallery-item {
+    .gallery-item {
       width: 250px;
       background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
       overflow: hidden;
       transition: transform 0.3s;
-  }
+    }
 
-  .gallery-item:hover {
+    .gallery-item:hover {
       transform: scale(1.05);
-  }
+    }
 
-  .gallery-item img {
+    .gallery-item img {
       width: 100%;
       display: block;
-  }
+    }
 
-  .gallery-item .info {
+    .gallery-item .info {
       padding: 1rem;
       font-size: 0.9rem;
       color: #555;
-  }
+    }
 
-  footer {
+    footer {
       background: #222;
       color: white;
       text-align: center;
       padding: 1rem;
       margin-top: 2rem;
-  }  
-</style>
-<body>
+    }
+  </style>
+  <body>
     <header>
-        <div class="logo-container" onclick="location.href='index.html'">
-            <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\logo.jpg" alt="LikeMe Logo">
-        </div>
-        <h1>LikeMe beauty studio</h1>
+      <div class="logo-container" onclick="location.href='index.html'">
+        <img
+          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\logo.jpg"
+          alt="LikeMe Logo"
+        />
+      </div>
+      <h1>LikeMe beauty studio</h1>
     </header>
 
     <section class="hero">
-        <h2>Добро пожаловать в LikeMe beauty studio</h2>
-        <p>Мы предлагаем широкий спектр парикмахерских услуг в Кемерово. Главный мастер – Анастасия, профессионал с большим опытом.</p>
+      <h2>Добро пожаловать в LikeMe beauty studio</h2>
+      <p>
+        Мы предлагаем широкий спектр парикмахерских услуг в Кемерово. Главный
+        мастер – Анастасия, профессионал с большим опытом.
+      </p>
     </section>
-<!-- Отступ -->
+    <!-- Отступ -->
     <div class="hamburger-btn" id="hamburgerBtn">
-        <span></span>
-        <span></span>
-        <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
     <div class="overlay" id="overlay"></div>
 
     <div class="sidebar" id="sidebar">
-        <div class="sidebar-menu">            
-            <div class="menu-item" onclick="alert('Перейти на о нас')">
-                <img class="menu-icon" viewBox="0 0 24 24" img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\info.png">
-                <span class="menu-text">О нас</span>
-            </div>
-                      
-            <div class="menu-item" onclick="alert('Перейти в услуги')">
-                <img class="menu-icon" viewBox="0 0 24 24" img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\hair-straightener.png">
-                <span class="menu-text">Услуги</span>
-            </div>
-            
-            <div class="menu-item" onclick="alert('Перейти в услуги')">
-                <img class="menu-icon" viewBox="0 0 24 24" img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\beard-trimming.png">
-                <span class="menu-text">Примеры работ</span>
-            </div>
-
-            <div class="menu-item" onclick="alert('Перейти в услуги')">
-                <img class="menu-icon" viewBox="0 0 24 24" img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\call-center-agent.png">
-                <span class="menu-text">Контакты</span>
-            </div>
-
+      <div class="sidebar-menu">
+        <div class="menu-item" onclick="alert('Перейти на о нас')">
+          <img
+            class="menu-icon"
+            viewBox="0 0 24 24"
+            img
+            src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\info.png"
+          />
+            <form action="{{ url_for('process') }}" method="post"></form>
+          <button>О нас</button>
         </div>
-        <div class="sidebar-footer">
-            <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
-            <button onclick="window.location.href='booking.html'">Запись на услугу</button>
+
+        <div class="menu-item" onclick="alert('Перейти в услуги')">
+          <img
+            class="menu-icon"
+            viewBox="0 0 24 24"
+            img
+            src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\hair-straightener.png"
+          />
+          <span class="menu-text">Услуги</span>
         </div>
+
+        <div class="menu-item" onclick="alert('Перейти в услуги')">
+          <img
+            class="menu-icon"
+            viewBox="0 0 24 24"
+            img
+            src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\beard-trimming.png"
+          />
+          <span class="menu-text">Примеры работ</span>
+        </div>
+
+        <div class="menu-item" onclick="alert('Перейти в услуги')">
+          <img
+            class="menu-icon"
+            viewBox="0 0 24 24"
+            img
+            src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\call-center-agent.png"
+          />
+          <span class="menu-text">Контакты</span>
+        </div>
+      </div>
+      <div class="sidebar-footer">
+        <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
+    <form action="{{ url_for('process') }}" method="post">
+        <button type="submit">Запись на услугу</button>
+      </div>
     </div>
-<!-- Отступ -->
+    <!-- Отступ -->
 
     <!-- <section class="gallery">
         {% for i in range(1, 11) %}
@@ -437,8 +464,8 @@
         <h2>О нас</h2>
         <p>Мы — LikeMe beauty studio в Кемерово. Опытная команда профессионалов, специализируемся на стрижках, окрашивании и уходе.</p>
       </section> -->
-      
-      <!-- <section id="works">
+
+    <!-- <section id="works">
         <h2>Наши работы</h2>
         <div class="gallery">
           {% for i in range(1, 11) %}
@@ -451,68 +478,80 @@
       </section> -->
 
     <div class="cards-container">
-        <!-- Карточка 1 -->
-        <div class="card">
-            <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\smartphone.png" alt="Online" class="card-image">
-            <div class="card-header">Для занятых и требовательных</div>
-                <div class="card-text">
-                    Удобная онлайн-запись, минимум ожидания и максимум результата
-                </div>            
+      <!-- Карточка 1 -->
+      <div class="card">
+        <img
+          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\smartphone.png"
+          alt="Online"
+          class="card-image"
+        />
+        <div class="card-header">Для занятых и требовательных</div>
+        <div class="card-text">
+          Удобная онлайн-запись, минимум ожидания и максимум результата
         </div>
+      </div>
 
-        <!-- Карточка 2 -->
-        <div class="card">
-            <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\cosmetics.png" alt="Online" class="card-image">
-            <div class="card-header">Для тех, кто ценит качество</div>
-                <div class="card-text">
-                    Используем только профессиональные бренды и проверенные методики
-                </div>
+      <!-- Карточка 2 -->
+      <div class="card">
+        <img
+          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\cosmetics.png"
+          alt="Online"
+          class="card-image"
+        />
+        <div class="card-header">Для тех, кто ценит качество</div>
+        <div class="card-text">
+          Используем только профессиональные бренды и проверенные методики
         </div>
+      </div>
 
-        <!-- Карточка 3 -->
-        <div class="card">
-            <img src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\appreciation.png" alt="Online" class="card-image">
-            <div class="card-header">Уютная атмосфера</div>
-                <div class="card-text">
-                    Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка, чтобы посещение салона стало приятным ритуалом
-                </div>
+      <!-- Карточка 3 -->
+      <div class="card">
+        <img
+          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\appreciation.png"
+          alt="Online"
+          class="card-image"
+        />
+        <div class="card-header">Уютная атмосфера</div>
+        <div class="card-text">
+          Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка,
+          чтобы посещение салона стало приятным ритуалом
         </div>
+      </div>
     </div>
 
     <footer>
-        <p2>&copy; 2025 LikeMe beauty studio</p2>
-          <p style="font-size: 18px; margin-bottom: 12px;">
-    <span style="color: #e53935;">Телефон:</span> +7 923 629-47-97
-  </p>
-  <p style="font-size: 18px;">
-    <span style="color: #e53935;">E-mail:</span> localbarber@bk.ru
-  </p>
+      <p2>&copy; 2025 LikeMe beauty studio</p2>
+      <p style="font-size: 18px; margin-bottom: 12px">
+        <span style="color: #e53935">Телефон:</span> +7 923 629-47-97
+      </p>
+      <p style="font-size: 18px">
+        <span style="color: #e53935">E-mail:</span> localbarber@bk.ru
+      </p>
     </footer>
-        <script>
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('overlay');
+    <script>
+      const hamburgerBtn = document.getElementById("hamburgerBtn");
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
 
-        // Toggle sidebar
-        function toggleSidebar() {
-            sidebar.classList.toggle('active');
-            hamburgerBtn.classList.toggle('active');
-            overlay.classList.toggle('active');
+      // Toggle sidebar
+      function toggleSidebar() {
+        sidebar.classList.toggle("active");
+        hamburgerBtn.classList.toggle("active");
+        overlay.classList.toggle("active");
+      }
+
+      // Close sidebar when clicking on overlay
+      overlay.addEventListener("click", toggleSidebar);
+
+      // Add event listener to hamburger button
+      hamburgerBtn.addEventListener("click", toggleSidebar);
+
+      // Close sidebar when pressing Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sidebar.classList.contains("active")) {
+          toggleSidebar();
         }
-
-        // Close sidebar when clicking on overlay
-        overlay.addEventListener('click', toggleSidebar);
-
-        // Add event listener to hamburger button
-        hamburgerBtn.addEventListener('click', toggleSidebar);
-
-        // Close sidebar when pressing Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && sidebar.classList.contains('active')) {
-                toggleSidebar();
-            }
-        });
+      });
     </script>
-</body>
+  </body>
 </html>
-    
