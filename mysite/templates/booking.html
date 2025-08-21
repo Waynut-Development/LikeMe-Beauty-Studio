@@ -226,7 +226,9 @@
   <body>
     <div class="container">
       <div class="close-btn" onclick="window.history.back()">×</div>
-      <a href="canceling or rescheduling.html" class="top-right-btn">Отменить или перенести</a>
+      <a href="canceling or rescheduling.html" class="top-right-btn"
+        >Отменить или перенести</a
+      >
 
       <div class="header">
         <h1>Запись на прием</h1>
@@ -262,12 +264,27 @@
             <div class="select-wrapper">
               <select id="service" class="form-control" required>
                 <option value="" disabled selected>Выберите услугу</option>
-                <option value="haircut">Стрижка</option>
-                <option value="coloring">Окрашивание</option>
-                <option value="manicure">Маникюр</option>
-                <option value="pedicure">Педикюр</option>
-                <option value="massage">Массаж</option>
-                <option value="consultation">Консультация</option>
+                <option value="haircut_woman">Стрижка женская</option>
+                <option value="haircut_man">Стрижка мужская</option>
+                <option value="haircut_child">Стрижка детская</option>
+                <option value="coloring">Окрашивание волос</option>
+                <option value="complex_coloring">Сложное окрашивание</option>
+                <option value="highlighting">Мелирование волос</option>
+                <option value="grey_cover_men">
+                  Камуфлирование седины волос (мужское)
+                </option>
+                <option value="grey_cover_beard">
+                  Камуфлирование + стрижка бороды
+                </option>
+                <option value="beard_trim">Стрижка бороды</option>
+                <option value="foam_massage">Пенный массаж головы</option>
+                <option value="scalp_peeling">Пилинг кожи головы</option>
+                <option value="styling_woman">Укладка женская</option>
+                <option value="styling_man">Укладка мужская</option>
+                <option value="hair_wash">Мытьё головы</option>
+                <option value="wax_removal">
+                  Удаление волос воском (уши, нос, меж бровка)
+                </option>
               </select>
             </div>
           </div>
