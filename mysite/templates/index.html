@@ -47,13 +47,13 @@
     </div>
   </header>
 
-  <section class="hero">
+  <div class="hero">
     <div class="logo-container">
       <img src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo" />
     </div>
     <div class="hero-container">
       <div class="hero-text">
-        <h2>LikeMe<br />beauty studio</h2>
+        <h2>LikeMe<br>beauty studio</h2>
         <h4>
           Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
           Главный мастер – Анастасия, профессионал с большим опытом
@@ -67,47 +67,53 @@
       </div>
     </div>
     <img class="hero-img" src="{{ url_for('static', filename='images/main.png') }}" />
-  </section>
+  </div>
 
   <div class="cards-container">
-    <!-- Карточка 1 -->
+
     <div class="card">
       <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Online" class="card-image" />
-      <div class="card-header">Для занятых и требовательных</div>
-      <div class="card-text">
+      <h4 class="card-header">Для занятых и требовательных</h4>
+      <p>
         Удобная онлайн-запись, минимум ожидания и максимум результата
-      </div>
+      </p>
     </div>
 
-    <!-- Карточка 2 -->
     <div class="card">
       <img src="{{ url_for('static', filename='images/cosmetics.png') }}" alt="Online" class="card-image" />
-      <div class="card-header">Для тех, кто ценит качество</div>
-      <div class="card-text">
+      <h4 class="card-header">Для тех, кто ценит качество</h4>
+      <p>
         Используем только профессиональные бренды и проверенные методики
-      </div>
+      </p>
     </div>
 
-    <!-- Карточка 3 -->
     <div class="card">
       <img src="{{ url_for('static', filename='images/appreciation.png') }}" alt="Online" class="card-image" />
-      <div class="card-header">Уютная атмосфера</div>
-      <div class="card-text">
+      <h3 class="card-header">Уютная атмосфера</h4>
+      <p>
         Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка,
         чтобы посещение салона стало приятным ритуалом
-      </div>
+      </p>
     </div>
   </div>
 
   <footer>
     <div class="footer-container">
-      <p2>&copy; 2025 LikeMe beauty studio</p2>
-      <p style="font-size: 18px">
-        <span style="color: #e53935">Телефон:</span> 8 (951) 586-10-90
-      </p>
-      <p style="font-size: 18px">
-        <span style="color: #e53935">E-mail:</span> nastyalitle1985@yandex.ru
-      </p>
+      <div class="developed">
+        <p>Сайт разработан:</p>
+        <a href="https://t.me/Dmitri_Simakov" target="_blank">
+          <img class="developer-icon" src="{{ url_for('static', filename='images/waynut.svg') }}" />
+        </a>
+      </div>
+      <div class="footer-info">
+        <p>
+          <span style="color: #777"> Телефон:</span> +7 (951) 586-10-90
+        </p>
+        <p>
+          <span style="color: #777"> E-mail:</span> nastyalitle1985@yandex.ru
+        </p>
+        <p style="color: #777">&copy; LikeMe beauty studio, 2025</p>
+      </div>
     </div>
   </footer>
 </body>

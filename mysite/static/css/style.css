@@ -1,20 +1,22 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    scrollbar-width: thin;
+    scroll-behavior: smooth;
 }
 
 :root {
     --brand: #D9CFAC;
+    --dark-brand: #D3BF9A;
     --dark-text: #333;
     --light-text: #fff;
-    --tb: 12rem;
-    --small-tb: 6rem;
-    --card: 2.75rem 3rem;
 }
 
 body {
     font-family: "Segoe UI", sans-serif;
+    font-size: 1.125rem;
     margin: 0 auto;
+    color: var(--dark-text);
     background: #f5f5f5;
 }
 
@@ -51,7 +53,7 @@ header {
 
 h4 {
     font-size: 1.5rem;
-    color: #333;
+    color: var(--dark-text);
     font-weight: normal;
 }
 
@@ -61,7 +63,7 @@ h4 {
     width: max-content;
     height: max-content;
     cursor: pointer;
-    padding-left: 1rem;
+    left: 1rem;
 }
 
 .logo-container img {
@@ -161,7 +163,7 @@ h4 {
 
 .menu-item:hover {
     button {
-        color: #ffcb00;
+        color: var(--dark-brand);
         cursor: pointer;
     }
 }
@@ -170,15 +172,14 @@ h4 {
     width: 24px;
     height: 24px;
     margin-right: 15px;
-    fill: #333;
-    stroke: #333;
+    fill: var(--dark-text);
+    stroke: var(--dark-text);
     stroke-width: 1.5;
 }
 
 .menu-text {
     font-size: 1.125rem;
-    color: #333;
-    font-weight: 500;
+    color: var(--dark-text);
 }
 
 .menu-button button {
@@ -194,7 +195,7 @@ h4 {
 }
 
 .menu-button button:hover {
-    background: #D3BF9A;
+    background: var(--dark-brand);
     transform: scale(1.04);
 }
 
@@ -216,10 +217,6 @@ h4 {
     visibility: visible;
 }
 
-section {
-    padding: 40px 20px;
-}
-
 .hero {
     position: relative;
     display: grid;
@@ -227,7 +224,8 @@ section {
     margin: 0 auto;
     max-width: 1400px;
     gap: 1rem;
-    padding-top: 6.125rem;
+    padding: 0 1rem;
+    padding-top: 6.3125rem;
     padding-bottom: 10rem;
 
     img {
@@ -266,7 +264,7 @@ h2 {
     font-size: 4rem;
     font-weight: 700;
     line-height: 1;
-    color: #2b3134;
+    color: var(--dark-text);
     letter-spacing: -0.02em;
 }
 
@@ -287,27 +285,17 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
     background-color: white;
     transition: all 0.3s ease;
-    border: 1px solid #eaeaea;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 .card-header {
-    font-size: 24px;
-    font-weight: 700;
-    color: #333;
-}
-
-.card-text {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #333;
+    font-weight: 500;
 }
 
 .card-image {
@@ -341,26 +329,6 @@ h2 {
     width: 100%;
     height: auto;
     display: block;
-}
-
-a {
-    font-family: "Roboto", "Segoe UI", sans-serif;
-    text-decoration: none;
-    background: #ffcb00;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    width: 100px;
-    position: relative;
-    align-items: center;
-    display: block;
-    justify-content: center;
-    margin: 0 auto;
-    text-align: center;
 }
 
 .gallery {
@@ -403,8 +371,26 @@ footer {
 
 .footer-container {
     display: flex;
+    justify-content: center;
+    gap: 4rem;
     width: 100%;
     max-width: 1400px;
     padding: 2rem 1rem;
     margin: 0 auto;
+}
+
+.footer-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.developed {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.developer-icon {
+    width: 14rem;
 }
