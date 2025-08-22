@@ -1,172 +1,129 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LikeMe beauty studio</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>LikeMe beauty studio</title>
-  <link rel="stylesheet" href="/static/css/style.css" />
-</head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-links">
+          <div class="menu-item">
+            <form action="{{ url_for('about') }}" method="post">
+              <button class="menu-text" , type="submit">О нас</button>
+            </form>
+          </div>
 
+          <div class="menu-item">
+            <form action="{{ url_for('services') }}" method="post">
+              <button class="menu-text" , type="submit">Услуги</button>
+            </form>
+          </div>
 
-<body>
-  <header>
-    <div class="header-container">
-      <div class="header-links">
-        <div class="menu-item" onclick="alert('Перейти на о нас')">
-          <form action="{{ url_for('testper') }}" method="post"></form>
-          <button class="menu-text">О нас</button>
+          <div class="menu-item">
+            <form action="{{ url_for('examples') }}" method="post">
+              <button class="menu-text" , type="submit">Примеры работ</button>
+            </form>
+          </div>
+
+          <div class="menu-item">
+            <form action="{{ url_for('contacts') }}" method="post">
+              <button class="menu-text" , type="submit">Контакты</button>
+            </form>
+          </div>
+          <div class="menu-button">
+            <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
+            <form action="{{ url_for('testper') }}" method="post">
+              <button type="submit">Записаться</button>
+            </form>
+          </div>
         </div>
+      </div>
+    </header>
 
-        <div class="menu-item" onclick="alert('Перейти в услуги')">
-          <button class="menu-text">Услуги</button>
-        </div>
-
-        <div class="menu-item" onclick="alert('Перейти в услуги')">
-          <button class="menu-text">Примеры работ</button>
-        </div>
-
-        <div class="menu-item" onclick="alert('Перейти в услуги')">
-          <button class="menu-text">Контакты</button>
+    <section class="hero">
+      <div class="logo-container">
+        <img
+          src="{{ url_for('static', filename='images/logo-transparent.png') }}"
+          alt="LikeMe Logo"
+        />
+      </div>
+      <div class="hero-container">
+        <div class="hero-text">
+          <h2>LikeMe<br />beauty studio</h2>
+          <h4>
+            Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
+            Главный мастер – Анастасия, профессионал с большим опытом
+          </h4>
         </div>
         <div class="menu-button">
           <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
           <form action="{{ url_for('testper') }}" method="post">
-            <button type="submit">Записаться</button>
+            <button class="big-boss-andrey" type="submit">Записаться</button>
+          </form>
+        </div>
+      </div>
+      <img
+        class="hero-img"
+        src="{{ url_for('static', filename='images/main.png') }}"
+      />
+    </section>
+
+    <div class="cards-container">
+      <!-- Карточка 1 -->
+      <div class="card">
+        <img
+          src="{{ url_for('static', filename='images/smartphone.png') }}"
+          alt="Online"
+          class="card-image"
+        />
+        <div class="card-header">Для занятых и требовательных</div>
+        <div class="card-text">
+          Удобная онлайн-запись, минимум ожидания и максимум результата
+        </div>
+      </div>
+
+      <!-- Карточка 2 -->
+      <div class="card">
+        <img
+          src="{{ url_for('static', filename='images/cosmetics.png') }}"
+          alt="Online"
+          class="card-image"
+        />
+        <div class="card-header">Для тех, кто ценит качество</div>
+        <div class="card-text">
+          Используем только профессиональные бренды и проверенные методики
+        </div>
+      </div>
+
+      <!-- Карточка 3 -->
+      <div class="card">
+        <img
+          src="{{ url_for('static', filename='images/appreciation.png') }}"
+          alt="Online"
+          class="card-image"
+        />
+        <div class="card-header">Уютная атмосфера</div>
+        <div class="card-text">
+          Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка,
+          чтобы посещение салона стало приятным ритуалом
         </div>
       </div>
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="logo-container">
-      <img src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo">
-    </div>
-    <div class="hero-container">
-      <div class="hero-text">
-        <h2>LikeMe<br>beauty studio</h2>
-        <h4>
-          Мы предлагаем широкий спектр парикмахерских услуг в Кемерово. Главный
-          мастер – Анастасия, профессионал с большим опытом
-        </h4>
+    <footer>
+      <div class="footer-container">
+        <p2>&copy; 2025 LikeMe beauty studio</p2>
+        <p style="font-size: 18px">
+          <span style="color: #e53935">Телефон:</span> 8 (951) 586-10-90
+        </p>
+        <p style="font-size: 18px">
+          <span style="color: #e53935">E-mail:</span> nastyalitle1985@yandex.ru
+        </p>
       </div>
-      <div class="menu-button">
-        <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
-        <form action="{{ url_for('testper') }}" method="post">
-          <button class="big-boss-andrey" type="submit">Записаться</button>
-      </div>
-    </div>
-    <img class="hero-img" src="{{ url_for('static', filename='images/main.png') }}">
-  </section>
-
-  <div class="hamburger-btn" id="hamburgerBtn">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <div class="overlay" id="overlay"></div>
-
-  <div class="sidebar" id="sidebar">
-    <div class="sidebar-menu">
-      <div class="menu-item" onclick="alert('Перейти на о нас')">
-        <img class="menu-icon" viewBox="0 0 24 24" img
-          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\info.png" />
-        <form action="{{ url_for('testper') }}" method="post"></form>
-        <button>О нас</button>
-      </div>
-
-      <div class="menu-item" onclick="alert('Перейти в услуги')">
-        <img class="menu-icon" viewBox="0 0 24 24" img
-          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\hair-straightener.png" />
-        <span class="menu-text">Услуги</span>
-      </div>
-
-      <div class="menu-item" onclick="alert('Перейти в услуги')">
-        <img class="menu-icon" viewBox="0 0 24 24" img
-          src="{{ url_for('static', filename='images/hair-straightener.png') }}" />
-        <span class="menu-text">Примеры работ</span>
-      </div>
-
-      <div class="menu-item" onclick="alert('Перейти в услуги')">
-        <img class="menu-icon" viewBox="0 0 24 24" img
-          src="C:\Users\Admin\Downloads\1234\LikeMe-Beauty-Studio\mysite\static\images\call-center-agent.png" />
-        <span class="menu-text">Контакты</span>
-      </div>
-    </div>
-    <div class="sidebar-footer">
-      <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
-      <form action="{{ url_for('testper') }}" method="post">
-        <button type="submit">Запись на услугу</button>
-    </div>
-  </div>
-
-  <div class="cards-container">
-    <!-- Карточка 1 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Online" class="card-image" />
-      <div class="card-header">Для занятых и требовательных</div>
-      <div class="card-text">
-        Удобная онлайн-запись, минимум ожидания и максимум результата
-      </div>
-    </div>
-
-    <!-- Карточка 2 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/cosmetics.png') }}" alt="Online" class="card-image" />
-      <div class="card-header">Для тех, кто ценит качество</div>
-      <div class="card-text">
-        Используем только профессиональные бренды и проверенные методики
-      </div>
-    </div>
-
-    <!-- Карточка 3 -->
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/appreciation.png') }}" alt="Online" class="card-image" />
-      <div class="card-header">Уютная атмосфера</div>
-      <div class="card-text">
-        Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка,
-        чтобы посещение салона стало приятным ритуалом
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-container">
-      <p2>&copy; 2025 LikeMe beauty studio</p2>
-      <p style="font-size: 18px;">
-        <span style="color: #e53935">Телефон:</span> +7 923 629-47-97
-      </p>
-      <p style="font-size: 18px">
-        <span style="color: #e53935">E-mail:</span> localbarber@bk.ru
-      </p>
-    </div>
-  </footer>
-  <script>
-    const hamburgerBtn = document.getElementById("hamburgerBtn");
-    const sidebar = document.getElementById("sidebar");
-    const overlay = document.getElementById("overlay");
-
-    // Toggle sidebar
-    function toggleSidebar() {
-      sidebar.classList.toggle("active");
-      hamburgerBtn.classList.toggle("active");
-      overlay.classList.toggle("active");
-    }
-
-    // Close sidebar when clicking on overlay
-    overlay.addEventListener("click", toggleSidebar);
-
-    // Add event listener to hamburger button
-    hamburgerBtn.addEventListener("click", toggleSidebar);
-
-    // Close sidebar when pressing Escape key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && sidebar.classList.contains("active")) {
-        toggleSidebar();
-      }
-    });
-  </script>
-</body>
-
+    </footer>
+  </body>
 </html>

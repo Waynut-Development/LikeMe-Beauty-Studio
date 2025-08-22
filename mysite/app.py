@@ -31,22 +31,23 @@ def success():
     return render_template('booking.html')
 
 
-# Страница "О нас"
-@app.route('/about')
+@app.route("/about", methods=["GET", "POST"])
 def about():
-    return render_template('about.html')
+    return render_template("sidebar_1_about_us.html")
 
+@app.route("/services", methods=["GET", "POST"])
+def services():
+    return render_template("sidebar_2_services.html")
 
-# Страница "Контакты"
-@app.route('/contacts')
+@app.route("/examples", methods=["GET", "POST"])
+def examples():
+    return render_template("sidebar_3_examples_of_work.html")
+
+@app.route("/contacts", methods=["GET", "POST"])
 def contacts():
-    return render_template('contacts.html')
+    return render_template("sidebar_4_contacts.html")
 
 
-# Перенаправление
-@app.route('/go-to-home')
-def go_to_home():
-    return redirect(url_for('home'))
 
 
 # ---------------------- Запись клиента ----------------------
