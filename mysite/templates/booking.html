@@ -3,172 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Запись на прием</title>
-    <style>
-      * {
-        font-family: "Segoe UI", sans-serif;
-      }
-      :root {
-        --primary: #d4af37;
-        --primary-light: #f9f5e8;
-        --dark: #333333;
-        --gray: #6b7280;
-        --white: #ffffff;
-        --text: #1f2937;
-      }
-
-      body {
-        background-color: var(--primary-light);
-        margin: 0;
-        padding: 0;
-        color: var(--text);
-      }
-
-      .container {
-        position: relative;
-        max-width: 600px;
-        margin: 40px auto;
-        padding: 30px;
-        background: var(--white);
-        border-radius: 14px;
-        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
-      }
-
-      .close-btn {
-        position: absolute;
-        top: 12px;
-        left: 12px;
-        font-size: 24px;
-        color: var(--primary);
-        background: none;
-        border: none;
-        cursor: pointer;
-        transition: color 0.3s, transform 0.2s;
-      }
-
-      .close-btn:hover {
-        color: #c09f2e;
-        transform: translateY(-1px);
-      }
-
-      .top-right-btn {
-        position: absolute;
-        top: 12px;
-        right: 12px;
-        padding: 7px 10px;
-        background-color: var(--primary);
-        color: var(--white);
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 14px;
-        border-radius: 8px;
-        box-shadow: 0 3px 8px rgba(212, 175, 55, 0.3);
-        transition: background-color 0.3s ease, transform 0.2s ease;
-      }
-
-      .top-right-btn:hover {
-        background-color: #c09f2e;
-        transform: translateY(-1px);
-      }
-
-      .header {
-        text-align: center;
-        margin-bottom: 30px;
-      }
-
-      .header h1 {
-        margin: 20px 0 0;
-        font-size: 30px;
-        color: var(--primary);
-      }
-
-      .header p {
-        margin: 5px 0 0;
-        color: var(--gray);
-        font-size: 16px;
-      }
-
-      .form-group {
-        margin-bottom: 22px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: 600;
-        color: var(--dark);
-      }
-
-      .form-control {
-        width: 100%;
-        padding: 12px 14px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        font-size: 16px;
-        color: var(--text);
-        background-color: var(--white);
-        transition: border-color 0.3s, box-shadow 0.3s;
-      }
-
-      .form-control:focus {
-        outline: none;
-        border-color: var(--primary);
-        box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
-      }
-
-      .select-wrapper {
-        position: relative;
-      }
-
-      .select-wrapper::after {
-        content: "▼";
-        font-size: 10px;
-        color: var(--gray);
-        position: absolute;
-        right: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-      }
-
-      select.form-control {
-        appearance: none;
-        -webkit-appearance: none;
-        background: transparent;
-      }
-
-      .btn {
-        display: block;
-        width: 100%;
-        padding: 14px;
-        background-color: var(--primary);
-        color: var(--white);
-        font-size: 18px;
-        font-weight: bold;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s, transform 0.2s;
-        box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-      }
-
-      .btn:hover {
-        background-color: #c09f2e;
-        transform: translateY(-2px);
-      }
-
-      .success-message {
-        display: none;
-        text-align: center;
-        font-size: 18px;
-        color: var(--primary);
-        margin-top: 25px;
-        padding: 18px;
-        background-color: var(--primary-light);
-        border: 1px solid #e6d8a8;
-        border-radius: 10px;
-      }
-    </style>
+    <title>Запись</title>
+    <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css"/>
   </head>
   <body>
     <div class="container">
@@ -176,20 +13,24 @@
       <a href="canceling or rescheduling.html" class="top-right-btn">Отменить или перенести</a>
 
       <div class="header">
-        <h1>Запись на прием</h1>
-        <p>Заполните форму для записи на услугу</p>
+        <h3>Запись на услугу</h3>
       </div>
 
       <section class="booking-form">
         <form action="/book" method="POST" id="appointment-form">
           <div class="form-group">
             <label for="name">Имя и фамилия</label>
-            <input type="text" id="name" name="name" class="form-control" placeholder="Введите ваше имя" required />
+            <input type="text" id="name" name="name" class="form-control" placeholder="Введите имя и фамилию" required />
           </div>
 
           <div class="form-group">
             <label for="phone">Номер телефона</label>
             <input type="tel" id="phone" name="phone" class="form-control" placeholder="+7 (___) ___-__-__" required />
+          </div>
+
+          <div class="form-group">
+            <label for="date">Дата</label>
+            <input type="date" id="date" name="date" class="form-control" required />
           </div>
 
           <div class="form-group">
@@ -217,25 +58,41 @@
           </div>
 
           <div class="form-group">
-            <label for="date">Дата</label>
-            <input type="date" id="date" name="date" class="form-control" required />
-          </div>
-
-          <div class="form-group">
             <label for="time">Время</label>
             <div class="select-wrapper">
               <select id="time" name="time" class="form-control" required>
                 <option value="" disabled selected>Выберите время</option>
-                <option value="09:00">09:00</option>
-                <option value="10:00">10:00</option>
-                <option value="11:00">11:00</option>
-                <option value="12:00">12:00</option>
-                <option value="13:00">13:00</option>
-                <option value="14:00">14:00</option>
-                <option value="15:00">15:00</option>
-                <option value="16:00">16:00</option>
-                <option value="17:00">17:00</option>
-                <option value="18:00">18:00</option>
+                <option value="07:00">07:00</option>
+<option value="07:30">07:30</option>
+<option value="08:00">08:00</option>
+<option value="08:30">08:30</option>
+<option value="09:00">09:00</option>
+<option value="09:30">09:30</option>
+<option value="10:00">10:00</option>
+<option value="10:30">10:30</option>
+<option value="11:00">11:00</option>
+<option value="11:30">11:30</option>
+<option value="12:00">12:00</option>
+<option value="12:30">12:30</option>
+<option value="13:00">13:00</option>
+<option value="13:30">13:30</option>
+<option value="14:00">14:00</option>
+<option value="14:30">14:30</option>
+<option value="15:00">15:00</option>
+<option value="15:30">15:30</option>
+<option value="16:00">16:00</option>
+<option value="16:30">16:30</option>
+<option value="17:00">17:00</option>
+<option value="17:30">17:30</option>
+<option value="18:00">18:00</option>
+<option value="18:30">18:30</option>
+<option value="19:00">19:00</option>
+<option value="19:30">19:30</option>
+<option value="20:00">20:00</option>
+<option value="20:30">20:30</option>
+<option value="21:00">21:00</option>
+<option value="21:30">21:30</option>
+<option value="22:00">22:00</option>
               </select>
             </div>
           </div>
