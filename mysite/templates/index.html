@@ -1,121 +1,119 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LikeMe beauty studio</title>
+    <!-- Описание примерное, потом поправить -->
+    <meta name="description" content="LikeMe Beauty Studio - парикмахерская в Кемерово с онлайн записью. Профессиональные услуги: женские и мужские стрижки, окрашивание, мелирование, укладки" />
+    <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>LikeMe beauty studio</title>
-  <!-- Описание примерное, потом поправить -->
-  <meta name="description" content="LikeMe Beauty Studio - парикмахерская в Кемерово с онлайн записью. Профессиональные услуги: женские и мужские стрижки, окрашивание, мелирование, укладки">
-  <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon">
-  <link rel="stylesheet" href="/static/css/style.css"/>
-</head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="header-links">
+          <div class="menu-button light">
+            <form action="{{ url_for('about') }}" method="post">
+              <button class="menu-text" type="submit">О нас</button>
+            </form>
+          </div>
 
-<body>
-  <header>
-    <div class="header-container">
-      <div class="header-links">
-        <div class="menu-item">
-          <form action="{{ url_for('about') }}" method="post">
-            <button class="menu-text" , type="submit">О нас</button>
-          </form>
+          <div class="menu-button light">
+            <form action="{{ url_for('services') }}" method="post">
+              <button class="menu-text" type="submit">Услуги</button>
+            </form>
+          </div>
+
+          <div class="menu-button light">
+            <form action="{{ url_for('examples') }}" method="post">
+              <button class="menu-text" type="submit">Примеры работ</button>
+            </form>
+          </div>
+
+          <div class="menu-button light">
+            <form action="{{ url_for('contacts') }}" method="post">
+              <button class="menu-text" type="submit">Контакты</button>
+            </form>
+          </div>
+          <div class="menu-button pl">
+            <form action="{{ url_for('success') }}" method="post">
+              <button type="submit">Записаться</button>
+            </form>
+          </div>
         </div>
+      </div>
+    </header>
 
-        <div class="menu-item">
-          <form action="{{ url_for('services') }}" method="post">
-            <button class="menu-text" , type="submit">Услуги</button>
-          </form>
-        </div>
-
-        <div class="menu-item">
-          <form action="{{ url_for('examples') }}" method="post">
-            <button class="menu-text" , type="submit">Примеры работ</button>
-          </form>
-        </div>
-
-        <div class="menu-item">
-          <form action="{{ url_for('contacts') }}" method="post">
-            <button class="menu-text" , type="submit">Контакты</button>
-          </form>
+    <div class="hero">
+      <div class="logo-container">
+        <img src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo" />
+      </div>
+      <div class="hero-container">
+        <div class="hero-text">
+          <h2>LikeMe<br />beauty studio</h2>
+          <h4>Мы предлагаем широкий спектр парикмахерских услуг в Кемерово. Главный мастер – Анастасия, профессионал с большим опытом</h4>
         </div>
         <div class="menu-button">
+          <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
           <form action="{{ url_for('success') }}" method="post">
-            <button type="submit">Записаться</button>
+            <button class="big-boss-andrey" type="submit">Записаться</button>
           </form>
         </div>
       </div>
+      <img class="hero-img" src="{{ url_for('static', filename='images/main.png') }}" />
     </div>
-  </header>
 
-  <div class="hero">
-    <div class="logo-container">
-      <img src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo" />
-    </div>
-    <div class="hero-container">
-      <div class="hero-text">
-        <h2>LikeMe<br>beauty studio</h2>
-        <h4>
-          Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
-          Главный мастер – Анастасия, профессионал с большим опытом
-        </h4>
+    <div class="cards-container">
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/smartphone.svg') }}" alt="Online" class="card-image" />
+        <h4 class="card-header">Для занятых и требовательных</h4>
+        <p>Удобная онлайн-запись, минимум ожидания и максимум результата</p>
       </div>
-      <div class="menu-button">
-        <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
-        <form action="{{ url_for('success') }}" method="post">
-          <button class="big-boss-andrey" type="submit">Записаться</button>
-        </form>
+
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/cosmetics.svg') }}" alt="Online" class="card-image" />
+        <h4 class="card-header">Для тех, кто ценит качество</h4>
+        <p>Используем только профессиональные бренды и проверенные методики</p>
       </div>
-    </div>
-    <img class="hero-img" src="{{ url_for('static', filename='images/main.png') }}" />
-  </div>
 
-  <div class="cards-container">
-
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/smartphone.png') }}" alt="Online" class="card-image" />
-      <h4 class="card-header">Для занятых и требовательных</h4>
-      <p>
-        Удобная онлайн-запись, минимум ожидания и максимум результата
-      </p>
-    </div>
-
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/cosmetics.png') }}" alt="Online" class="card-image" />
-      <h4 class="card-header">Для тех, кто ценит качество</h4>
-      <p>
-        Используем только профессиональные бренды и проверенные методики
-      </p>
-    </div>
-
-    <div class="card">
-      <img src="{{ url_for('static', filename='images/appreciation.png') }}" alt="Online" class="card-image" />
-      <h3 class="card-header">Уютная атмосфера</h4>
-      <p>
-        Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка,
-        чтобы посещение салона стало приятным ритуалом
-      </p>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-container">
-      <div class="developed">
-        <p>Сайт разработан:</p>
-        <a href="https://t.me/Dmitri_Simakov" target="_blank">
-          <img class="developer-icon" src="{{ url_for('static', filename='images/waynut.svg') }}" />
-        </a>
-      </div>
-      <div class="footer-info">
-        <p>
-          <span style="color: #777"> Телефон:</span> +7 (951) 586-10-90
-        </p>
-        <p>
-          <span style="color: #777"> E-mail:</span> nastyalitle1985@yandex.ru
-        </p>
-        <p style="color: #777">&copy; LikeMe beauty studio, 2025</p>
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/appreciation.svg') }}" alt="Online" class="card-image" />
+        <h4 class="card-header">Уютная атмосфера</h4>
+        <p>Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка</p>
       </div>
     </div>
-  </footer>
-</body>
 
+    <div class="about">
+      <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
+      <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.png') }}" />
+      <p class="about-text">Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно создаем стильные стрижки, сложное окрашивание и занимаемся восстановлением волос.
+
+        Для нас важна не только техника, но и атмосфера: индивидуальный подход и любовь к своему делу</p>
+    </div>
+
+    <div class="services"></div>
+
+    <footer>
+      <div class="footer-container">
+        <div class="developed">
+          <p>Сайт разработан:</p>
+          <a href="https://t.me/Dmitri_Simakov" target="_blank"><img class="developer-icon" src="{{ url_for('static', filename='images/waynut.svg') }}" /></a>
+        </div>
+        <div class="footer-info">
+          <p>
+            <span style="color: #777">Телефон:</span> +7 (951) 586-10-90
+          </p>
+          <p>
+            <span style="color: #777">E-mail:</span> nastyalitle1985@yandex.ru
+          </p>
+          <p style="color: #777">&copy; LikeMe beauty studio, 2025</p>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>

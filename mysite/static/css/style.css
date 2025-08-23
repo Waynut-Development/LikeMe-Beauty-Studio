@@ -20,7 +20,10 @@
 }
 
 body {
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Manrope", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: normal;
+    font-style: normal;
     font-size: 1.125rem;
     margin: 0 auto;
     color: var(--dark-text);
@@ -42,13 +45,12 @@ header {
     background-color: #fff;
     border-radius: 5rem;
     padding: 0.5rem;
-    padding-left: 2.5rem;
+    padding-left: 1.5rem;
 }
 
 .header-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
 
     button {
         transition: all 0.3s ease;
@@ -151,21 +153,21 @@ h4 {
     padding: 40px 20px;
 }
 
-.menu-item {
+/* .menu-item {
     display: flex;
     position: relative;
     align-items: center;
     margin-bottom: 0px;
     cursor: pointer;
 
-    /* &::after {
+    &::after {
         content: '';
         position: absolute;
         top: -1rem;
         left: -1rem;
         right: -1rem;
         bottom: -1rem;
-    } */
+    }
 }
 
 .menu-item:hover {
@@ -173,7 +175,7 @@ h4 {
         color: var(--dark-brand);
         cursor: pointer;
     }
-}
+} */
 
 .menu-icon {
     width: 24px;
@@ -201,9 +203,25 @@ h4 {
     transition: all 0.3s ease;
 }
 
+.pl {
+    padding-left: 1rem;
+}
+
+.menu-button.light button {
+    background: none;
+    padding: 1rem 1rem;
+    border-radius: 0;
+}
+
 .menu-button button:hover {
     background: var(--dark-brand);
     transform: scale(1.04);
+}
+
+.menu-button.light button:hover {
+    transform: none;
+    color: var(--dark-brand);
+    background: none;
 }
 
 .overlay {
@@ -268,9 +286,13 @@ h4 {
 }
 
 h2 {
-    font-size: 4rem;
+    font-family: "Alumni Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 5rem;
     font-weight: 700;
-    line-height: 1;
+    line-height: 0.8;
     color: var(--dark-text);
     letter-spacing: -0.02em;
 }
@@ -288,12 +310,16 @@ h2 {
 .card {
     height: 100%;
     border-radius: 24px;
-    padding: 1.5rem 2rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     background-color: white;
     transition: all 0.3s ease;
+
+    h4 {
+        font-weight: 700;
+    }
 }
 
 .card:hover {
@@ -309,6 +335,31 @@ h2 {
     height: 90px;
     width: max-content;
     object-fit: cover;
+}
+
+.about {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 0 1rem;
+    gap: 16rem;
+    padding-bottom: 10rem;
+
+    .about-text {
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+}
+
+.hairdresser {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -58%);
+    width: 75%;
 }
 
 .gallery {
@@ -428,11 +479,6 @@ footer {
 
 .close-btn:hover {
     color: var(--dark);
-}
-
-h3 {
-    font-family: "Segoe UI", sans-serif;
-    font-size: 2rem;
 }
 
 .top-right-btn {
