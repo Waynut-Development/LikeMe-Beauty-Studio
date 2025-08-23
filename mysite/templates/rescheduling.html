@@ -225,7 +225,11 @@
 
     <div class="close-btn" onclick="window.history.back()">×</div>
 
-    <a href="index.html" class="top-right-btn">На главную</a>
+    <div>
+        <form action="{{ url_for('home')}}">
+        <button class="top-right-btn" , type="submit">На главную</button>
+        </form>
+    </div>
     <div class="header">
       <h1>Перенос записи</h1>
       <p>Заполните форму для переноса записи на услугу</p>

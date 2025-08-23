@@ -14,7 +14,7 @@ def get_db_connection():
 # ---------------------- Маршруты ----------------------
 
 # Главная страница
-@app.route('/')
+@app.route('/home')
 def home():
     return render_template('index.html')
 
@@ -44,8 +44,20 @@ def examples():
 def contacts():
     return render_template("sidebar_4_contacts.html")
 
+# отмена или перенос
+@app.route("/canceling_rescheduling", methods=["POST"])
+def canceling_rescheduling():
+    return render_template("canceling or rescheduling.html")
 
+# отмена записи
+@app.route("/canceling", methods=["POST"])
+def canceling():
+    return render_template("canceling.html")
 
+# перенос записи
+@app.route("/rescheduling", methods=["POST"])
+def rescheduling():
+    return render_template("rescheduling.html")
 
 # ---------------------- Запись клиента ----------------------
 @app.route("/book", methods=["POST"])
