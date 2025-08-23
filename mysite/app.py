@@ -19,54 +19,29 @@ def home():
     return render_template('index.html')
 
 
-# Обработчик кнопки (пример теста)
-@app.route('/testper', methods=['POST'])
-def testper():
-    return redirect(url_for('success'))
-
-
 # Страница после обработки (пример)
-@app.route('/success')
+@app.route('/success', methods=['POST'])
 def success():
     return render_template('booking.html')
 
 # О нас
 @app.route("/about", methods=["POST"])
 def about():
-    return redirect(url_for("about_page"))
-
-@app.route("/about_page")
-def about_page():
     return render_template("sidebar_1_about_us.html")
-
 
 # Услуги
 @app.route("/services", methods=["POST"])
 def services():
-    return redirect(url_for("services_page"))
-
-@app.route("/services_page")
-def services_page():
     return render_template("sidebar_2_services.html")
-
 
 # Примеры работ
 @app.route("/examples", methods=["POST"])
 def examples():
-    return redirect(url_for("examples_page"))
-
-@app.route("/examples_page")
-def examples_page():
     return render_template("sidebar_3_examples_of_work.html")
-
 
 # Контакты
 @app.route("/contacts", methods=["POST"])
 def contacts():
-    return redirect(url_for("contacts_page"))
-
-@app.route("/contacts_page")
-def contacts_page():
     return render_template("sidebar_4_contacts.html")
 
 

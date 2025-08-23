@@ -158,14 +158,14 @@ h4 {
     margin-bottom: 0px;
     cursor: pointer;
 
-    &::after {
+    /* &::after {
         content: '';
         position: absolute;
         top: -1rem;
         left: -1rem;
         right: -1rem;
         bottom: -1rem;
-    }
+    } */
 }
 
 .menu-item:hover {
