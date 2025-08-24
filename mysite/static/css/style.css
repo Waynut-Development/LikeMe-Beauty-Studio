@@ -6,6 +6,7 @@
     scroll-behavior: smooth;
 }
 
+
 :root {
     --brand: #D9CFAC;
     --dark-brand: #D3BF9A;
@@ -53,7 +54,9 @@ h3 {
     letter-spacing: -0.02em;
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
     font-family: "Manrope", sans-serif;
 }
 
@@ -68,7 +71,14 @@ h5 {
     font-weight: 600;
 }
 
-p, span, a, button, input, select, textarea, label {
+p,
+span,
+a,
+button,
+input,
+select,
+textarea,
+label {
     font-family: "Manrope", sans-serif;
 }
 
