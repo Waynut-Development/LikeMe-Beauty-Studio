@@ -1,297 +1,267 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LikeMe beauty studio</title>
-    <!-- Описание примерное, потом поправить -->
-    <meta
-      name="description"
-      content="LikeMe Beauty Studio - парикмахерская в Кемерово с онлайн записью. Профессиональные услуги: женские и мужские стрижки, окрашивание, мелирование, укладки"
-    />
-    <link
-      rel="shortcut icon"
-      href="/static/images/icon.svg"
-      type="image/x-icon"
-    />
-    <link rel="stylesheet" href="/static/css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
 
-  <body>
-    <header>
-      <div class="header-container">
-        <div class="header-links">
-          <div class="menu-button light">
-            <button class="menu-text">О нас</button>
-          </div>
-          <div class="menu-button light">
-            <button class="menu-text">Услуги</button>
-          </div>
-          <div class="menu-button light">
-            <button class="menu-text">Контакты</button>
-          </div>
-          <div class="menu-button pl">
-            <form action="{{ url_for('success') }}" method="post">
-              <button type="submit">Записаться</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LikeMe beauty studio</title>
+  <!-- Описание примерное, потом поправить -->
+  <meta name="description"
+    content="LikeMe Beauty Studio - парикмахерская в Кемерово с онлайн записью. Профессиональные услуги: женские и мужские стрижки, окрашивание, мелирование, укладки" />
+  <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap"
+    rel="stylesheet" />
+</head>
 
-    <div class="hero">
-      <div class="logo-container">
-        <img
-          src="{{ url_for('static', filename='images/logo-transparent.png') }}"
-          alt="LikeMe Logo"
-        />
-      </div>
-      <div class="hero-container">
-        <div class="hero-text">
-          <h2>LikeMe<br />beauty studio</h2>
-          <h4>
-            Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
-            Главный мастер – Анастасия, профессионал с большим опытом
-          </h4>
+<body>
+  <header>
+    <div class="header-container">
+      <div class="header-links">
+        <div class="menu-button light">
+          <button class="menu-text">О нас</button>
         </div>
-        <div class="menu-button">
-          <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
+        <div class="menu-button light">
+          <button class="menu-text">Услуги</button>
+        </div>
+        <div class="menu-button light">
+          <button class="menu-text">Контакты</button>
+        </div>
+        <div class="menu-button pl">
           <form action="{{ url_for('success') }}" method="post">
-            <button class="big-boss-andrey" type="submit">Записаться</button>
+            <button type="submit">Записаться</button>
           </form>
         </div>
       </div>
-      <img
-        class="hero-img"
-        src="{{ url_for('static', filename='images/main.png') }}"
-      />
     </div>
+  </header>
 
-    <div class="cards-container">
-      <div class="card">
-        <img
-          src="{{ url_for('static', filename='images/smartphone.svg') }}"
-          alt="Online"
-          class="card-image"
-        />
-        <h4 class="card-header">Для занятых и требовательных</h4>
-        <p>Удобная онлайн-запись, минимум ожидания и максимум результата</p>
+  <div class="hero">
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo" />
+    </div>
+    <div class="hero-container">
+      <div class="hero-text">
+        <h2>LikeMe<br />beauty studio</h2>
+        <h4>
+          Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
+          Главный мастер – Анастасия, профессионал с большим опытом
+        </h4>
       </div>
-
-      <div class="card">
-        <img
-          src="{{ url_for('static', filename='images/cosmetics.svg') }}"
-          alt="Online"
-          class="card-image"
-        />
-        <h4 class="card-header">Для тех, кто ценит качество</h4>
-        <p>Используем только профессиональные бренды и проверенные методики</p>
-      </div>
-
-      <div class="card">
-        <img
-          src="{{ url_for('static', filename='images/appreciation.svg') }}"
-          alt="Online"
-          class="card-image"
-        />
-        <h4 class="card-header">Уютная атмосфера</h4>
-        <p>Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка</p>
+      <div class="menu-button">
+        <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
+        <form action="{{ url_for('success') }}" method="post">
+          <button class="big-boss-andrey" type="submit">Записаться</button>
+        </form>
       </div>
     </div>
+    <img class="hero-img" src="{{ url_for('static', filename='images/main.png') }}" />
+  </div>
 
-    <div class="about">
-      <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
-      <img
-        class="hairdresser"
-        src="{{ url_for('static', filename='images/hairdresser.png') }}"
-      />
-      <p class="about-text">
-        Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно
-        создаем стильные стрижки, сложное окрашивание и занимаемся
-        восстановлением волос. Для нас важна не только техника, но и атмосфера:
-        индивидуальный подход и любовь к своему делу
-      </p>
+  <div class="cards-container">
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/smartphone.svg') }}" alt="Online" class="card-image" />
+      <h4 class="card-header">Для занятых и требовательных</h4>
+      <p>Удобная онлайн-запись, минимум ожидания и максимум результата</p>
     </div>
 
-    <div class="services">
-      <h3>Услуги</h3>
-      <div class="services-cards">
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/1.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Детская стрижка</p>
-            <h4>800 ₽</h4>
-          </div>
-        </div>
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/2.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Мужская стрижка</p>
-            <h4>1 000 ₽</h4>
-          </div>
-        </div>
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/3.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Женская стрижка</p>
-            <h4>от 3 000 ₽</h4>
-          </div>
-        </div>
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/4.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Короткая женская стрижка</p>
-            <h4>1 500 ₽</h4>
-          </div>
-        </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/cosmetics.svg') }}" alt="Online" class="card-image" />
+      <h4 class="card-header">Для тех, кто ценит качество</h4>
+      <p>Используем только профессиональные бренды и проверенные методики</p>
+    </div>
 
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/5.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Окрашивание</p>
-            <h4>от 4 000 ₽</h4>
-          </div>
+    <div class="card">
+      <img src="{{ url_for('static', filename='images/appreciation.svg') }}" alt="Online" class="card-image" />
+      <h4 class="card-header">Уютная атмосфера</h4>
+      <p>Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка</p>
+    </div>
+  </div>
+
+  <div class="about">
+    <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
+    <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.png') }}" />
+    <p class="about-text">
+      Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно
+      создаем стильные стрижки, сложное окрашивание и занимаемся
+      восстановлением волос. Для нас важна не только техника, но и атмосфера:
+      индивидуальный подход и любовь к своему делу
+    </p>
+  </div>
+
+  <div class="services">
+    <h3>Услуги</h3>
+    <div class="services-cards">
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/1.jpg') }}" />
         </div>
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/6.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Сложное окрашивание аиртач</p>
-            <h4>от 7 000 ₽</h4>
-          </div>
+        <div class="description">
+          <p>Детская стрижка</p>
+          <h4>800 ₽</h4>
         </div>
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/7.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Ботокс волос</p>
-            <h4>от 3 000 ₽</h4>
-          </div>
+      </div>
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/2.jpg') }}" />
         </div>
-        <div class="services-card">
-          <div class="services-img">
-            <img
-              src="{{ url_for('static', filename='images/services/8.jpg') }}"
-            />
-          </div>
-          <div class="description">
-            <p>Локоны</p>
-            <h4>от 1 500 ₽</h4>
-          </div>
+        <div class="description">
+          <p>Мужская стрижка</p>
+          <h4>1 000 ₽</h4>
+        </div>
+      </div>
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/3.jpg') }}" />
+        </div>
+        <div class="description">
+          <p>Женская стрижка</p>
+          <h4>от 3 000 ₽</h4>
+        </div>
+      </div>
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/4.jpg') }}" />
+        </div>
+        <div class="description">
+          <p>Короткая женская стрижка</p>
+          <h4>1 500 ₽</h4>
+        </div>
+      </div>
+
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/5.jpg') }}" />
+        </div>
+        <div class="description">
+          <p>Окрашивание</p>
+          <h4>от 4 000 ₽</h4>
+        </div>
+      </div>
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/6.jpg') }}" />
+        </div>
+        <div class="description">
+          <p>Сложное окрашивание аиртач</p>
+          <h4>от 7 000 ₽</h4>
+        </div>
+      </div>
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/7.jpg') }}" />
+        </div>
+        <div class="description">
+          <p>Ботокс волос</p>
+          <h4>от 3 000 ₽</h4>
+        </div>
+      </div>
+      <div class="services-card">
+        <div class="services-img">
+          <img src="{{ url_for('static', filename='images/services/8.jpg') }}" />
+        </div>
+        <div class="description">
+          <p>Локоны</p>
+          <h4>от 1 500 ₽</h4>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="contacts">
-      <h3>Контакты</h3>
-      <div class="contacts-container">
-        <div class="contacts-info">
-          <p>Адрес: ул. Дзержинского 29 Б, Вход 2, 2 этаж, 202 кабинет</p>
-          <p>Телефон: +7 (951) 586-10-90</p>
-          <p>Почта: nastyalitle1985@yandex.ru</p>
-          <p>ИНН: 420500925287</p>
-          <img src="{{ url_for('static', filename='images/tg-qr.png') }}" />
+  <div class="contacts">
+    <h3>Контакты</h3>
+    <div class="contacts-container">
+      <div class="contacts-info">
+        <div class="contacts-cards">
+          <div class="contacts-card">
+            <p>Адрес</p>
+            <h5>ул. Дзержинского 29Б, Вход 2, 2 этаж, офис 202</h5>
+          </div>
+          <div class="contacts-card">
+            <p>Часы работы</p>
+            <h5>с 9:00 до 21:00</h5>
+          </div>
+          <div class="contacts-card">
+            <p>Телефон</p>
+            <h5>+7 (951) 586-10-90</h5>
+          </div>
+          <div class="contacts-card">
+            <p>Почта</p>
+            <h5>nastyalitle1985@yandex.ru</h5>
+          </div>
+          <div class="contacts-card">
+            <p>ИНН</p>
+            <h5>420500925287</h5>
+          </div>
         </div>
-        <div class="widget-container">
-          <div class="widget-links">
-            <a
-              href="http://2gis.ru/kemerovo/firm/70000001080339326/photos/70000001080339326/center/86.07480526014116,55.34579862672048/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos"
-              target="_blank"
-              >Узнать больше</a
-            >
-            <a
-              href="http://2gis.ru/kemerovo/center/86.073964,55.345195/zoom/16/routeTab/rsType/bus/to/86.073964,55.345195╎Like me, студия красоты?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route"
-              target="_blank"
-              >Найти проезд</a
-            >
+        <div class="contacts-cards">
+          <div class="contacts-buttons">
+            <a class="contacts-button tg" href="https://t.me/like_me42" target="_blank">
+              Telegram
+            </a>
+            <a class="contacts-button wa" href="https://wa.me/message/PBFV3BIKUEW7P1?src=qr" target="_blank">
+              WhatsApp
+            </a>
           </div>
-          <div class="dg-widget-container">
-            <script
-              charset="utf-8"
-              src="https://widgets.2gis.com/js/DGWidgetLoader.js"
-            ></script>
-            <script charset="utf-8">
-              new DGWidgetLoader({
-                width: "100%",
-                height: 600,
-                borderColor: "#e0e0e0ff",
-                pos: {
-                  lat: 55.34579862672048,
-                  lon: 86.07480526014116,
-                  zoom: 16,
-                },
-                opt: {
-                  city: "kemerovo",
-                },
-                org: [{ id: "70000001080339326" }],
-              });
-            </script>
-          </div>
+        </div>
+      </div>
+      <div class="widget-container">
+        <div class="widget-links">
+          <a href="http://2gis.ru/kemerovo/firm/70000001080339326/photos/70000001080339326/center/86.07480526014116,55.34579862672048/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos"
+            target="_blank">Узнать больше</a>
+          <a href="http://2gis.ru/kemerovo/center/86.073964,55.345195/zoom/16/routeTab/rsType/bus/to/86.073964,55.345195╎Like me, студия красоты?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route"
+            target="_blank">Найти проезд</a>
+        </div>
+        <div class="dg-widget-container">
+          <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+          <script charset="utf-8">
+            new DGWidgetLoader({
+              width: "100%",
+              height: 600,
+              borderColor: "#e0e0e0ff",
+              pos: {
+                lat: 55.34579862672048,
+                lon: 86.07480526014116,
+                zoom: 16,
+              },
+              opt: {
+                city: "kemerovo",
+              },
+              org: [{ id: "70000001080339326" }],
+            });
+          </script>
+        </div>
 
-          <noscript
-            style="
+        <noscript style="
               color: #c00;
               font-size: 14px;
               padding: 16px;
               text-align: center;
-            "
-            >Виджет карты использует JavaScript. Включите его в настройках
-            браузера.</noscript
-          >
-        </div>
+            ">Виджет карты использует JavaScript. Включите его в настройках
+          браузера.</noscript>
       </div>
     </div>
+  </div>
 
-    <footer>
-      <div class="footer-container">
-        <div class="developed">
-          <p>Сайт разработан:</p>
-          <a href="https://t.me/Dmitri_Simakov" target="_blank"
-            ><img
-              class="developer-icon"
-              src="{{ url_for('static', filename='images/waynut.svg') }}"
-          /></a>
-        </div>
-        <div class="footer-info">
-          <p><span style="color: #777">Телефон:</span> +7 (951) 586-10-90</p>
-          <p>
-            <span style="color: #777">E-mail:</span> nastyalitle1985@yandex.ru
-          </p>
-          <p style="color: #777">&copy; LikeMe beauty studio, 2025</p>
-        </div>
+  <footer>
+    <div class="footer-container">
+      <div class="developed">
+        <p>Сайт разработан:</p>
+        <a href="https://t.me/WaynutDevelopment" target="_blank"><img class="developer-icon"
+            src="{{ url_for('static', filename='images/waynut.svg') }}" /></a>
       </div>
-    </footer>
-  </body>
+      <div class="footer-info">
+        <p><span style="color: #777">Телефон:</span> +7 (951) 586-10-90</p>
+        <p>
+          <span style="color: #777">E-mail:</span> nastyalitle1985@yandex.ru
+        </p>
+        <p style="color: #777">&copy; LikeMe beauty studio, 2025</p>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>
