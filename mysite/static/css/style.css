@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap');
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -51,15 +53,23 @@ h3 {
     letter-spacing: -0.02em;
 }
 
+h4, h5, h6 {
+    font-family: "Manrope", sans-serif;
+}
+
 h4 {
     font-size: 1.5rem;
     color: var(--dark-text);
-    font-weight: normal;
+    font-weight: 600;
 }
 
 h5 {
     font-size: 1.25rem;
     font-weight: 600;
+}
+
+p, span, a, button, input, select, textarea, label {
+    font-family: "Manrope", sans-serif;
 }
 
 header {
@@ -91,8 +101,6 @@ header {
         padding: 0;
     }
 }
-
-
 
 .logo-container {
     position: absolute;
@@ -181,30 +189,6 @@ header {
     padding: 40px 20px;
 }
 
-/* .menu-item {
-    display: flex;
-    position: relative;
-    align-items: center;
-    margin-bottom: 0px;
-    cursor: pointer;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: -1rem;
-        left: -1rem;
-        right: -1rem;
-        bottom: -1rem;
-    }
-}
-
-.menu-item:hover {
-    button {
-        color: var(--dark-brand);
-        cursor: pointer;
-    }
-} */
-
 .menu-icon {
     width: 24px;
     height: 24px;
@@ -215,11 +199,13 @@ header {
 }
 
 .menu-text {
+    font-family: "Manrope", sans-serif;
     font-size: 1.125rem;
     color: var(--dark-text);
 }
 
 .menu-button button {
+    font-family: "Manrope", sans-serif;
     width: 100%;
     padding: 1rem 2rem;
     background: var(--brand);
@@ -337,7 +323,6 @@ header {
 
 .card:hover {
     transform: scale(1.02);
-    /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04); */
 }
 
 .card-header {
@@ -462,6 +447,7 @@ header {
 }
 
 .contacts-button {
+    font-family: "Manrope", sans-serif;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -473,7 +459,6 @@ header {
 
     &.tg {
         background: var(--brand);
-        /* background: #acd7ff; */
 
         &:hover {
             background: var(--dark-brand);
@@ -483,7 +468,6 @@ header {
 
     &.wa {
         background: var(--brand);
-        /* background: #adffa3; */
 
         &:hover {
             background: var(--dark-brand);
@@ -505,6 +489,7 @@ header {
 }
 
 .widget-links a {
+    font-family: "Manrope", sans-serif;
     font-size: 1rem;
     padding: 1rem 0.75rem;
     color: var(--dark);
@@ -593,7 +578,7 @@ footer {
 }
 
 .top-right-btn {
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Manrope", sans-serif;
     position: absolute;
     top: 1rem;
     right: 1rem;
@@ -639,6 +624,7 @@ footer {
 }
 
 label {
+    font-family: "Manrope", sans-serif;
     display: block;
     margin-bottom: 8px;
     font-weight: 600;
@@ -646,6 +632,7 @@ label {
 }
 
 .form-control {
+    font-family: "Manrope", sans-serif;
     width: 100%;
     padding: 12px 14px;
     border: 1px solid #ddd;
@@ -662,11 +649,11 @@ label {
     box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
-.select-wrapper {
+.Select-wrapper {
     position: relative;
 }
 
-.select-wrapper::after {
+.Select-wrapper::after {
     content: "▼";
     font-size: 10px;
     color: var(--gray);
@@ -684,7 +671,7 @@ select.form-control {
 }
 
 .btn {
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Manrope", sans-serif;
     padding: 1rem 2rem;
     background-color: var(--brand);
     color: var(--dark-text);
@@ -719,7 +706,7 @@ select.form-control {
 
 /* Для canceling or rescheduling */
 .btns_for_selection {
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Manrope", sans-serif;
     padding: 1rem 2rem;
     background-color: var(--brand);
     color: var(--dark-text);
