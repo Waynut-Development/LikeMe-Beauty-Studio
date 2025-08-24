@@ -661,3 +661,27 @@ select.form-control {
 }
 
 /* конец booking */
+
+/* Для canceling or rescheduling */
+.btns_for_selection {
+    font-family: "Segoe UI", sans-serif;
+    padding: 1rem 2rem;
+    background-color: var(--brand);
+    color: var(--dark-text);
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: normal;
+    border-radius: 5rem;
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-bottom: 1rem;
+}
+
+.btns_for_selection:hover {
+    background-color: var(--dark-brand);
+    transform: scale(1.04);
+}
+
+/* конец canceling or rescheduling */
