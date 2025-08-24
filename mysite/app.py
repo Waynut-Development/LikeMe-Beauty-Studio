@@ -20,9 +20,14 @@ def home():
 
 
 # Страница после обработки (пример)
-@app.route('/success', methods=['POST'])
+@app.route('/success', methods=["GET", 'POST'])
 def success():
     return render_template('booking.html')
+
+@app.route("/admin")
+def admin():
+    return render_template("admin_panel.html")
+
 
 # О нас
 @app.route("/about", methods=["POST"])
@@ -59,8 +64,21 @@ def canceling():
 def rescheduling():
     return render_template("rescheduling.html")
 
-# ---------------------- Запись клиента ----------------------
-@app.route("/book", methods=["POST"])
+
+
+# ---------- Получить свободные слоты ----------
+@app.route("/free_slots/<date>")
+def free_slots(date):
+    conn = get_db_connection()
+    rows = conn.execute(
+        "SELECT time FROM schedule WHERE date=? AND status='free' ORDER BY time",
+        (date,)
+    ).fetchall()
+    conn.close()
+    return jsonify([row["time"] for row in rows])
+
+# ---------- Запись клиента ----------
+@app.route("/book", methods=["GET", "POST"])
 def book():
     name = request.form.get("name")
     phone = request.form.get("phone")
@@ -71,16 +89,18 @@ def book():
     conn = get_db_connection()
     conn.execute(
         "INSERT INTO appointments (name, phone, service, date, time) VALUES (?, ?, ?, ?, ?)",
-        (name, phone, service, date, time),
+        (name, phone, service, date, time)
+    )
+    conn.execute(
+        "UPDATE schedule SET status='busy' WHERE date=? AND time=?",
+        (date, time)
     )
     conn.commit()
     conn.close()
 
     return redirect(url_for("success"))
 
-
-# ---------------------- Админ-панель расписания ----------------------
-# Получить расписание
+# ---------- Расписание (API для админки) ----------
 @app.route("/schedule", methods=["GET"])
 def get_schedule():
     conn = get_db_connection()
@@ -88,7 +108,6 @@ def get_schedule():
     conn.close()
     return jsonify([dict(row) for row in rows])
 
-# Сохранить расписание
 @app.route("/schedule", methods=["POST"])
 def save_schedule():
     data = request.get_json()
@@ -96,7 +115,7 @@ def save_schedule():
         return jsonify({"error": "Нет данных"}), 400
 
     conn = get_db_connection()
-    for cell in data:  # [{date, time, status}, ...]
+    for cell in data:
         conn.execute(
             """
             INSERT INTO schedule (date, time, status)

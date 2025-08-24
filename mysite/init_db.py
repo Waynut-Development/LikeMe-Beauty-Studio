@@ -1,10 +1,12 @@
 import sqlite3
 
+DB = "beauty.db"
+
 def init_db():
-    conn = sqlite3.connect("beauty.db")
+    conn = sqlite3.connect(DB)
     cur = conn.cursor()
 
-    # Таблица записей клиентов
+    # appointments
     cur.execute("""
     CREATE TABLE IF NOT EXISTS appointments (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -16,19 +18,22 @@ def init_db():
     )
     """)
 
-    # Таблица расписания
+    # schedule
     cur.execute("""
     CREATE TABLE IF NOT EXISTS schedule (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         date TEXT NOT NULL,
         time TEXT NOT NULL,
-        status TEXT NOT NULL CHECK(status IN ('free','busy','off'))
+        status TEXT NOT NULL,
+        UNIQUE(date, time) -- 🔑 ключ для ON CONFLICT
     )
     """)
 
     conn.commit()
     conn.close()
-    print("База данных инициализирована!")
+    print("База инициализирована!")
 
 if __name__ == "__main__":
     init_db()
+
+
