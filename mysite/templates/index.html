@@ -18,27 +18,13 @@
       <div class="header-container">
         <div class="header-links">
           <div class="menu-button light">
-            <form action="{{ url_for('about') }}" method="post">
-              <button class="menu-text" type="submit">О нас</button>
-            </form>
+            <button class="menu-text">О нас</button>
           </div>
-
           <div class="menu-button light">
-            <form action="{{ url_for('services') }}" method="post">
-              <button class="menu-text" type="submit">Услуги</button>
-            </form>
+            <button class="menu-text">Услуги</button>
           </div>
-
           <div class="menu-button light">
-            <form action="{{ url_for('examples') }}" method="post">
-              <button class="menu-text" type="submit">Примеры работ</button>
-            </form>
-          </div>
-
-          <div class="menu-button light">
-            <form action="{{ url_for('contacts') }}" method="post">
-              <button class="menu-text" type="submit">Контакты</button>
-            </form>
+            <button class="menu-text">Контакты</button>
           </div>
           <div class="menu-button pl">
             <form action="{{ url_for('success') }}" method="post">
@@ -91,12 +77,127 @@
     <div class="about">
       <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
       <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.png') }}" />
-      <p class="about-text">Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно создаем стильные стрижки, сложное окрашивание и занимаемся восстановлением волос.
-
-        Для нас важна не только техника, но и атмосфера: индивидуальный подход и любовь к своему делу</p>
+      <p class="about-text">Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно создаем стильные стрижки, сложное окрашивание и занимаемся восстановлением волос. Для нас важна не только техника, но и атмосфера: индивидуальный подход и любовь к своему делу</p>
     </div>
 
-    <div class="services"></div>
+    <div class="services">
+      <h3>Услуги</h3>
+      <div class="services-cards">
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/1.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Детская стрижка</p>
+            <h4>800 ₽</h4>
+          </div>
+        </div>
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/2.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Мужская стрижка</p>
+            <h4>1 000 ₽</h4>
+          </div>
+        </div>
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/3.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Женская стрижка</p>
+            <h4>от 3 000 ₽</h4>
+          </div>
+        </div>
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/4.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Короткая женская стрижка</p>
+            <h4>1 500 ₽</h4>
+          </div>
+        </div>
+
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/5.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Окрашивание</p>
+            <h4>от 4 000 ₽</h4>
+          </div>
+        </div>
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/6.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Сложное окрашивание аиртач</p>
+            <h4>от 7 000 ₽</h4>
+          </div>
+        </div>
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/7.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Ботокс волос</p>
+            <h4>от 3 000 ₽</h4>
+          </div>
+        </div>
+        <div class="services-card">
+          <div class="services-img">
+            <img src="{{ url_for('static', filename='images/services/8.jpg') }}" />
+          </div>
+          <div class="description">
+            <p>Локоны</p>
+            <h4>от 1 500 ₽</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contacts">
+      <h3>Контакты</h3>
+      <div class="contacts-container">
+        <div class="contacts-info">
+          <p>Адрес: ул. Дзержинского 29 Б, Вход 2, 2 этаж, 202 кабинет</p>
+          <p>Телефон: +7 (951) 586-10-90</p>
+          <p>Почта: nastyalitle1985@yandex.ru</p>
+          <p>ИНН: 420500925287</p>
+          <img src="{{ url_for('static', filename='images/tg-qr.png') }}" />
+        </div>
+        <div class="widget-container">
+          <div class="widget-links">
+            <a href="http://2gis.ru/kemerovo/firm/70000001080339326/photos/70000001080339326/center/86.07480526014116,55.34579862672048/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=photos" target="_blank">Фотографии компании</a>
+            <a href="http://2gis.ru/kemerovo/center/86.073964,55.345195/zoom/16/routeTab/rsType/bus/to/86.073964,55.345195╎Like me, студия красоты?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route" target="_blank">Найти проезд</a>
+          </div>
+          <div class="dg-widget-container">
+            <script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script>
+            <script charset="utf-8">
+              new DGWidgetLoader({
+                width: '100%',
+                height: 600,
+                borderColor: '#e0e0e0ff',
+                pos: {
+                  lat: 55.34579862672048,
+                  lon: 86.07480526014116,
+                  zoom: 16
+                },
+                opt: {
+                  city: 'kemerovo'
+                },
+                org: [{ id: '70000001080339326' }]
+              })
+            </script>
+          </div>
+
+          <noscript style="color:#c00; font-size:14px; padding: 16px; text-align:center;">Виджет карты использует JavaScript. Включите его в настройках браузера.</noscript>
+        </div>
+      </div>
+    </div>
 
     <footer>
       <div class="footer-container">
