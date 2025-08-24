@@ -1,5 +1,6 @@
 import sqlite3
 from flask import Flask, render_template, url_for, redirect, request, jsonify
+from config import send_telegram_message
 
 app = Flask(__name__)
 
@@ -97,6 +98,17 @@ def book():
     )
     conn.commit()
     conn.close()
+
+    # 🚀 Отправляем уведомление в Telegram
+    message = (
+        f"📅 Новая запись!\n"
+        f"Имя: {name}\n"
+        f"Телефон: {phone}\n"
+        f"Услуга: {service}\n"
+        f"Дата: {date}\n"
+        f"Время: {time}"
+    )
+    send_telegram_message(message)
 
     return redirect(url_for("success"))
 
