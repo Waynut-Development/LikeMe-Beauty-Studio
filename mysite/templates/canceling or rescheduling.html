@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Отмена или перенос записи</title>
-    <link rel="stylesheet" href="/static/css/style.css" />
-        <link
-      rel="shortcut icon"
-      href="/static/images/icon.svg"
-      type="image/x-icon"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <div class="header">
-        <h1>Выберите, что вы хотите сделать</h1>
-      </div>
-      <div class="close-btn" onclick="window.history.back()">×</div>
 
-      <div class="buttons-container">
-        <form action="{{ url_for('canceling') }}" method="post">
-          <button class="btns_for_selection" type="submit">Отменить</button>
-        </form>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Отмена или перенос записи</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
+</head>
 
-        <form action="{{ url_for('rescheduling') }}" method="post">
-          <button class="btns_for_selection" type="submit">Перенести</button>
-        </form>
-      </div>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Выберите, что вы хотите сделать</h1>
     </div>
-  </body>
+    <div class="close-btn" onclick="window.history.back()">×</div>
+
+    <div class="buttons-container">
+      <form action="{{ url_for('canceling') }}" method="post">
+        <button class="btns_for_selection" type="submit">Отменить</button>
+      </form>
+
+      <form action="{{ url_for('rescheduling') }}" method="post">
+        <button class="btns_for_selection" type="submit">Перенести</button>
+      </form>
+    </div>
+  </div>
+</body>
+
 </html>

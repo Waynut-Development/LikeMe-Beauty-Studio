@@ -10,11 +10,6 @@
     content="LikeMe Beauty Studio - парикмахерская в Кемерово с онлайн записью. Профессиональные услуги: женские и мужские стрижки, окрашивание, мелирование, укладки" />
   <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
   <link rel="stylesheet" href="/static/css/style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap"
-    rel="stylesheet" />
 </head>
 
 <body>
@@ -45,14 +40,13 @@
     </div>
     <div class="hero-container">
       <div class="hero-text">
-        <h2>LikeMe<br />beauty studio</h2>
-        <h4>
+        <h1>LikeMe<br>beauty studio</h1>
+        <p>
           Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
           Главный мастер – Анастасия, профессионал с большим опытом
-        </h4>
+        </p>
       </div>
       <div class="menu-button">
-        <!-- кнопка не работала поскольку ты пытался использовать href как для тега <a> -->
         <form action="{{ url_for('success') }}" method="post">
           <button class="big-boss-andrey" type="submit">Записаться</button>
         </form>
@@ -64,19 +58,19 @@
   <div class="cards-container">
     <div class="card">
       <img src="{{ url_for('static', filename='images/smartphone.svg') }}" alt="Online" class="card-image" />
-      <h4 class="card-header">Для занятых и требовательных</h4>
+      <h4>Для занятых и требовательных</h4>
       <p>Удобная онлайн-запись, минимум ожидания и максимум результата</p>
     </div>
 
     <div class="card">
       <img src="{{ url_for('static', filename='images/cosmetics.svg') }}" alt="Online" class="card-image" />
-      <h4 class="card-header">Для тех, кто ценит качество</h4>
+      <h4>Для тех, кто ценит качество</h4>
       <p>Используем только профессиональные бренды и проверенные методики</p>
     </div>
 
     <div class="card">
       <img src="{{ url_for('static', filename='images/appreciation.svg') }}" alt="Online" class="card-image" />
-      <h4 class="card-header">Уютная атмосфера</h4>
+      <h4>Уютная атмосфера</h4>
       <p>Вас ждет стильный интерьер, ароматный кофе и расслабляющая музыка</p>
     </div>
   </div>
@@ -84,7 +78,7 @@
   <div class="about">
     <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
     <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.png') }}" />
-    <p class="about-text">
+    <p>
       Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно
       создаем стильные стрижки, сложное окрашивание и занимаемся
       восстановлением волос. Для нас важна не только техника, но и атмосфера:
