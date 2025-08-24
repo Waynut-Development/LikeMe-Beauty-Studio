@@ -29,25 +29,25 @@ def admin():
     return render_template("admin_panel.html")
 
 
-# О нас
-@app.route("/about", methods=["POST"])
-def about():
-    return render_template("sidebar_1_about_us.html")
+# # О нас
+# @app.route("/about", methods=["POST"])
+# def about():
+#     return render_template("sidebar_1_about_us.html")
 
-# Услуги
-@app.route("/services", methods=["POST"])
-def services():
-    return render_template("sidebar_2_services.html")
+# # Услуги
+# @app.route("/services", methods=["POST"])
+# def services():
+#     return render_template("sidebar_2_services.html")
 
-# Примеры работ
-@app.route("/examples", methods=["POST"])
-def examples():
-    return render_template("sidebar_3_examples_of_work.html")
+# # Примеры работ
+# @app.route("/examples", methods=["POST"])
+# def examples():
+#     return render_template("sidebar_3_examples_of_work.html")
 
-# Контакты
-@app.route("/contacts", methods=["POST"])
-def contacts():
-    return render_template("sidebar_4_contacts.html")
+# # Контакты
+# @app.route("/contacts", methods=["POST"])
+# def contacts():
+#     return render_template("sidebar_4_contacts.html")
 
 # отмена или перенос
 @app.route("/canceling_rescheduling", methods=["POST"])
