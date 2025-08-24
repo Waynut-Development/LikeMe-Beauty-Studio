@@ -6,7 +6,6 @@
     scroll-behavior: smooth;
 }
 
-
 :root {
     --brand: #D9CFAC;
     --dark-brand: #D3BF9A;
@@ -91,6 +90,11 @@ label {
     font-weight: 500;
 }
 
+/* Убираем подчеркивание у всех ссылок */
+a {
+    text-decoration: none;
+}
+
 header {
     z-index: 10;
     margin: 0 auto;
@@ -112,13 +116,43 @@ header {
 .header-links {
     display: flex;
     align-items: center;
+}
 
-    button {
-        transition: all 0.3s ease;
-        border: none;
-        background: none;
-        padding: 0;
-    }
+/* Стили для ссылок в меню (заменяют стили кнопок) */
+.menu-button a {
+    display: inline-block;
+    font-family: "Manrope", sans-serif;
+    padding: 1rem 2rem;
+    background: var(--brand);
+    color: var(--dark-text);
+    border: none;
+    border-radius: 5rem;
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.menu-button.light a {
+    background: none;
+    padding: 1rem 1rem;
+    border-radius: 0;
+    color: var(--dark-text);
+}
+
+.menu-button a:hover {
+    background: var(--dark-brand);
+    transform: scale(1.04);
+}
+
+.menu-button.light a:hover {
+    transform: none;
+    color: var(--dark-brand);
+    background: none;
+}
+
+.pl {
+    padding-left: 1rem;
 }
 
 .logo-container {
@@ -134,8 +168,7 @@ header {
     height: 4.625rem;
 }
 
-/* меню скрыто пока ширина экрана позволяет отображать ссылки в хедере */
-
+/* Остальные стили остаются без изменений */
 .hamburger-btn {
     position: fixed;
     top: 20px;
@@ -153,7 +186,6 @@ header {
     z-index: 100;
     transition: all 0.3s ease;
     padding: 5px;
-
     display: none;
 }
 
@@ -236,16 +268,6 @@ header {
     transition: all 0.3s ease;
 }
 
-.pl {
-    padding-left: 1rem;
-}
-
-.menu-button.light button {
-    background: none;
-    padding: 1rem 1rem;
-    border-radius: 0;
-}
-
 .menu-button button:hover {
     background: var(--dark-brand);
     transform: scale(1.04);
@@ -285,11 +307,11 @@ header {
     padding: 0 1rem;
     padding-top: 6.3125rem;
     padding-bottom: 10rem;
+}
 
-    .hero-img {
-        width: 100%;
-        border-radius: 1.25rem;
-    }
+.hero .hero-img {
+    width: 100%;
+    border-radius: 1.25rem;
 }
 
 .hero-container {
@@ -298,14 +320,14 @@ header {
     gap: 2rem;
     flex-direction: column;
     justify-content: center;
+}
 
-    .menu-button {
-        width: max-content;
-    }
+.hero-container .menu-button {
+    width: max-content;
+}
 
-    .big-boss-andrey {
-        padding: 1.25rem 2.5rem;
-    }
+.hero-container .big-boss-andrey {
+    padding: 1.25rem 2.5rem;
 }
 
 .hero-text {
@@ -360,11 +382,11 @@ header {
     padding: 0 1rem;
     gap: 16rem;
     padding-bottom: 10rem;
+}
 
-    p {
-        margin: 0 auto;
-        max-width: 1000px;
-    }
+.about p {
+    margin: 0 auto;
+    max-width: 1000px;
 }
 
 .hairdresser {
@@ -398,23 +420,21 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
+}
 
-    img {
-        transition: transform 0.3s ease;
-        width: 100%;
-    }
+.services-card img {
+    transition: transform 0.3s ease;
+    width: 100%;
+}
 
-    .services-img {
-        display: flex;
-        border-radius: 1.25rem;
-        overflow: hidden;
+.services-card .services-img {
+    display: flex;
+    border-radius: 1.25rem;
+    overflow: hidden;
+}
 
-        &:hover {
-            img {
-                transform: scale(1.04);
-            }
-        }
-    }
+.services-card .services-img:hover img {
+    transform: scale(1.04);
 }
 
 .contacts-container {
@@ -426,11 +446,11 @@ header {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
 
-    img {
-        padding-top: 0.5rem;
-        width: 16rem;
-    }
+.contacts-info img {
+    padding-top: 0.5rem;
+    width: 16rem;
 }
 
 .contacts-cards {
@@ -446,10 +466,10 @@ header {
     flex-direction: column;
     gap: 0.25rem;
     padding: 1rem;
+}
 
-    p {
-        color: var(--gray);
-    }
+.contacts-card p {
+    color: var(--gray);
 }
 
 .contacts-buttons {
@@ -467,24 +487,24 @@ header {
     padding: 1rem 2rem;
     border-radius: 0.75rem;
     transition: all 0.3s ease;
+}
 
-    &.tg {
-        background: var(--brand);
+.contacts-button.tg {
+    background: var(--brand);
+}
 
-        &:hover {
-            background: var(--dark-brand);
-            transform: scale(1.04);
-        }
-    }
+.contacts-button.tg:hover {
+    background: var(--dark-brand);
+    transform: scale(1.04);
+}
 
-    &.wa {
-        background: var(--brand);
+.contacts-button.wa {
+    background: var(--brand);
+}
 
-        &:hover {
-            background: var(--dark-brand);
-            transform: scale(1.04);
-        }
-    }
+.contacts-button.wa:hover {
+    background: var(--dark-brand);
+    transform: scale(1.04);
 }
 
 .widget-container {
@@ -561,7 +581,6 @@ footer {
 }
 
 /* для страницы booking */
-
 .container {
     position: relative;
     max-width: 600px;
@@ -602,10 +621,10 @@ footer {
     border-radius: 5rem;
     border: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .menu-text {
-        color: var(--dark-text);
-    }
+.top-right-btn .menu-text {
+    color: var(--dark-text);
 }
 
 .top-right-btn:hover {
@@ -738,3 +757,63 @@ select.form-control {
 }
 
 /* конец canceling or rescheduling */
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.5rem;
+    }
+    
+    .header-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .menu-button a {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        margin: 0.25rem;
+    }
+    
+    h1 {
+        font-size: 4rem;
+    }
+    
+    h2 {
+        font-size: 3.5rem;
+    }
+    
+    h3 {
+        font-size: 2.5rem;
+    }
+    
+    .hero {
+        grid-template-columns: 1fr;
+        padding-top: 8rem;
+    }
+    
+    .hero-text {
+        padding-right: 0;
+    }
+    
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .contacts-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+#about_us {
+
+    scroll-margin-top: 8rem;
+}
+#anchor_services,
+#anchor_contacts {
+    scroll-margin-top: 2rem;
+}
