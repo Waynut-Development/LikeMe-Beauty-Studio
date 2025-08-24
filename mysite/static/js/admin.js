@@ -76,26 +76,22 @@ function attachPaintHandlers(tableEl) {
   function handlePointerDown(e) {
     const cell = e.target.closest("td.paintable");
     if (!cell || !currentStatus) return;
+
+    // Определяем режим: закрашивать или стирать
     paintMode = cell.classList.contains(currentStatus) ? "erase" : "apply";
     painting = true;
+
     if (paintMode === "apply") applyStatus(cell);
     else eraseStatus(cell);
-    cell.setPointerCapture?.(e.pointerId);
+
     e.preventDefault();
   }
 
-  function handlePointerEnter(e) {
+  function handlePointerMove(e) {
     if (!painting) return;
     const cell = e.target.closest("td.paintable");
     if (!cell) return;
-    if (paintMode === "apply") applyStatus(cell);
-    else eraseStatus(cell);
-  }
 
-  function handlePointerOver(e) {
-    if (!painting) return;
-    const cell = e.target.closest("td.paintable");
-    if (!cell) return;
     if (paintMode === "apply") applyStatus(cell);
     else eraseStatus(cell);
   }
@@ -104,9 +100,9 @@ function attachPaintHandlers(tableEl) {
     painting = false;
   }
 
+  // навешиваем события
   tableEl.addEventListener("pointerdown", handlePointerDown);
-  tableEl.addEventListener("pointerenter", handlePointerEnter, true);
-  tableEl.addEventListener("pointerover", handlePointerOver, true);
+  tableEl.addEventListener("pointermove", handlePointerMove);
   window.addEventListener("pointerup", handlePointerUp);
 }
 
@@ -136,12 +132,6 @@ function generateTable(dates, times, data) {
 
   const tableEl = tableContainer.querySelector("table");
   attachPaintHandlers(tableEl);
-
-  tableEl.addEventListener("click", (e) => {
-    const cell = e.target.closest("td.paintable");
-    if (!cell) return;
-    toggleOnce(cell);
-  });
 }
 
 // ---------- БЭКЕНД ----------
