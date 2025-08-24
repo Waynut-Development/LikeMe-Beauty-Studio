@@ -112,28 +112,45 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const today = new Date().toISOString().split("T")[0];
-        document.getElementById("date").min = today;
+        // ======= МАСКА ДЛЯ ТЕЛЕФОНА =======
+        const phoneInput = document.getElementById("phone");
 
-        const form = document.getElementById("appointment-form");
-        const successMessage = document.getElementById("success-message");
-
-        form.addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const formData = new FormData(form);
-
-          const response = await fetch("/book", {
-            method: "POST",
-            body: formData,
-          });
-
-          if (response.ok) {
-            form.style.display = "none";
-            successMessage.style.display = "block";
-          } else {
-            alert("Форма отправлена, спасибо!");
+        function maskPhone(event) {
+          let value = phoneInput.value.replace(/\D/g, ""); // только цифры
+          if (value.startsWith("7")) {
+            value = value.substring(1); // убираем первую 7, так как "+7" фиксированное
           }
+          let result = "+7 (";
+
+          if (value.length > 0) result += value.substring(0, 3);
+          if (value.length >= 3) result += ") " + value.substring(3, 6);
+          if (value.length >= 6) result += "-" + value.substring(6, 8);
+          if (value.length >= 8) result += "-" + value.substring(8, 10);
+
+          phoneInput.value = result;
+        }
+
+        phoneInput.addEventListener("input", maskPhone);
+        phoneInput.addEventListener("focus", maskPhone);
+        phoneInput.addEventListener("blur", () => {
+          if (phoneInput.value === "+7 (") phoneInput.value = "";
+        });
+
+        // ======= ДАТА ПО УМОЛЧАНИЮ 2025 =======
+        const dateInput = document.getElementById("date");
+        const today = new Date();
+
+        const year = 2025; // фиксированный год
+        const month = String(today.getMonth() + 1).padStart(2, "0"); // текущий месяц
+        const fakeDay = "01"; // временный день, чтобы input не ругался
+
+        // устанавливаем 2025-MM-01
+        dateInput.value = `${year}-${month}-${fakeDay}`;
+
+        // но сразу очищаем день, чтобы пользователь выбрал сам
+        dateInput.addEventListener("focus", () => {
+          dateInput.value = "";
+          dateInput.min = `${year}-${month}-01`;
         });
       });
     </script>
