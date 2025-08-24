@@ -17,13 +17,13 @@
     <div class="header-container">
       <div class="header-links">
         <div class="menu-button light">
-          <button class="menu-text">О нас</button>
+          <a href = "#about_us" class = "menu-text">О нас</a>
         </div>
         <div class="menu-button light">
-          <button class="menu-text">Услуги</button>
+          <a href = "#anchor_services" class="menu-text">Услуги</a>
         </div>
         <div class="menu-button light">
-          <button class="menu-text">Контакты</button>
+          <a href = "#anchor_contacts" class="menu-text">Контакты</a>
         </div>
         <div class="menu-button pl">
           <form action="{{ url_for('success') }}" method="post">
@@ -76,7 +76,7 @@
   </div>
 
   <div class="about">
-    <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
+    <h2 id = "about_us">LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
     <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.png') }}" />
     <p>
       Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно
@@ -87,7 +87,7 @@
   </div>
 
   <div class="services">
-    <h3>Услуги</h3>
+    <h3 id = "anchor_services">Услуги</h3>
     <div class="services-cards">
       <div class="services-card">
         <div class="services-img">
@@ -166,7 +166,7 @@
   </div>
 
   <div class="contacts">
-    <h3>Контакты</h3>
+    <h3 id = "anchor_contacts">Контакты</h3>
     <div class="contacts-container">
       <div class="contacts-info">
         <div class="contacts-cards">
