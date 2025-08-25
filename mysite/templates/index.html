@@ -17,13 +17,13 @@
     <div class="header-container">
       <div class="header-links">
         <div class="menu-button light">
-          <a href = "#about_us" class = "menu-text">О нас</a>
+          <a href="#about">О нас</a>
         </div>
         <div class="menu-button light">
-          <a href = "#anchor_services" class="menu-text">Услуги</a>
+          <a href="#services">Услуги</a>
         </div>
         <div class="menu-button light">
-          <a href = "#anchor_contacts" class="menu-text">Контакты</a>
+          <a href="#contacts">Контакты</a>
         </div>
         <div class="menu-button pl">
           <form action="{{ url_for('success') }}" method="post">
@@ -36,7 +36,7 @@
 
   <div class="hero">
     <div class="logo-container">
-      <img src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo" />
+      <img class="logo" src="{{ url_for('static', filename='images/logo-transparent.png') }}" alt="LikeMe Logo" />
     </div>
     <div class="hero-container">
       <div class="hero-text">
@@ -55,7 +55,7 @@
     <img class="hero-img" src="{{ url_for('static', filename='images/main.png') }}" />
   </div>
 
-  <div class="cards-container">
+  <div class="cards">
     <div class="card">
       <img src="{{ url_for('static', filename='images/smartphone.svg') }}" alt="Online" class="card-image" />
       <h4>Для занятых и требовательных</h4>
@@ -75,9 +75,11 @@
     </div>
   </div>
 
+  <div id="about"></div>
+
   <div class="about">
-    <h2 id = "about_us">LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
-    <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.png') }}" />
+    <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
+    <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.svg') }}" />
     <p>
       Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно
       создаем стильные стрижки, сложное окрашивание и занимаемся
@@ -86,8 +88,10 @@
     </p>
   </div>
 
+  <div id="services"></div>
+
   <div class="services">
-    <h3 id = "anchor_services">Услуги</h3>
+    <h3>Услуги</h3>
     <div class="services-cards">
       <div class="services-card">
         <div class="services-img">
@@ -165,8 +169,10 @@
     </div>
   </div>
 
+  <div id="contacts"></div>
+
   <div class="contacts">
-    <h3 id = "anchor_contacts">Контакты</h3>
+    <h3>Контакты</h3>
     <div class="contacts-container">
       <div class="contacts-info">
         <div class="contacts-cards">

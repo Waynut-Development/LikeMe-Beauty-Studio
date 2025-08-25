@@ -90,9 +90,17 @@ label {
     font-weight: 500;
 }
 
-/* Убираем подчеркивание у всех ссылок */
 a {
     text-decoration: none;
+}
+
+#about {
+    scroll-margin-top: 12rem;
+}
+
+#services,
+#contacts {
+    scroll-margin-top: 8rem;
 }
 
 header {
@@ -108,6 +116,7 @@ header {
 .header-container {
     display: flex;
     background-color: #fff;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.04);
     border-radius: 5rem;
     padding: 0.5rem;
     padding-left: 1.5rem;
@@ -118,16 +127,13 @@ header {
     align-items: center;
 }
 
-/* Стили для ссылок в меню (заменяют стили кнопок) */
 .menu-button a {
     display: inline-block;
-    font-family: "Manrope", sans-serif;
     padding: 1rem 2rem;
     background: var(--brand);
     color: var(--dark-text);
     border: none;
     border-radius: 5rem;
-    font-size: 1.125rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
@@ -152,7 +158,7 @@ header {
 }
 
 .pl {
-    padding-left: 1rem;
+    padding-left: 0.75rem;
 }
 
 .logo-container {
@@ -249,12 +255,6 @@ header {
     stroke-width: 1.5;
 }
 
-.menu-text {
-    font-family: "Manrope", sans-serif;
-    font-size: 1.125rem;
-    color: var(--dark-text);
-}
-
 .menu-button button {
     font-family: "Manrope", sans-serif;
     width: 100%;
@@ -263,7 +263,6 @@ header {
     color: var(--dark-text);
     border: none;
     border-radius: 5rem;
-    font-size: 1.125rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -305,8 +304,8 @@ header {
     max-width: 1400px;
     gap: 1rem;
     padding: 0 1rem;
-    padding-top: 6.3125rem;
-    padding-bottom: 10rem;
+    padding-top: 6.5rem;
+    padding-bottom: 12rem;
 }
 
 .hero .hero-img {
@@ -337,14 +336,14 @@ header {
     padding-right: 5rem;
 }
 
-.cards-container {
+.cards {
     margin: 0 auto;
     max-width: 1400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     padding: 0 1rem;
     gap: 1rem;
-    padding-bottom: 10rem;
+    padding-bottom: 12rem;
 }
 
 .card {
@@ -384,11 +383,6 @@ header {
     padding-bottom: 10rem;
 }
 
-.about p {
-    margin: 0 auto;
-    max-width: 1000px;
-}
-
 .hairdresser {
     position: absolute;
     top: 42%;
@@ -402,7 +396,7 @@ header {
     margin: 0 auto;
     max-width: 1400px;
     padding: 0 1rem;
-    padding-bottom: 10rem;
+    padding-bottom: 12rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -448,15 +442,10 @@ header {
     gap: 1rem;
 }
 
-.contacts-info img {
-    padding-top: 0.5rem;
-    width: 16rem;
-}
-
 .contacts-cards {
     background: #fff;
     border-radius: 1.25rem;
-    padding: 1rem;
+    padding: 1.25rem 1rem;
     display: flex;
     flex-direction: column;
 }
@@ -465,7 +454,7 @@ header {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
-    padding: 1rem;
+    padding: 0.75rem 1rem;
 }
 
 .contacts-card p {
@@ -514,18 +503,14 @@ header {
 }
 
 .widget-links {
-    padding: 0 0.75rem;
+    padding: 0.25rem 1rem;
     display: flex;
     flex-wrap: wrap;
 }
 
 .widget-links a {
-    font-family: "Manrope", sans-serif;
-    font-size: 1rem;
     padding: 1rem 0.75rem;
     color: var(--dark);
-    text-decoration: none;
-    font-weight: normal;
     transition: color 0.3s ease;
 }
 
@@ -545,7 +530,7 @@ header {
 .dg-widget-container iframe {
     border: none !important;
     width: 100%;
-    height: 517px;
+    height: 483px;
 }
 
 footer {
@@ -735,6 +720,7 @@ select.form-control {
 /* конец booking */
 
 /* Для canceling or rescheduling */
+
 .btns_for_selection {
     font-family: "Manrope", sans-serif;
     padding: 1rem 2rem;
@@ -758,62 +744,115 @@ select.form-control {
 
 /* конец canceling or rescheduling */
 
-/* Адаптивность */
-@media (max-width: 768px) {
-    .header-container {
-        padding: 0.5rem;
+/* aдаптив */
+
+@media (max-width: 1116px) {
+    .dg-widget-container iframe {
+        height: 510px;
     }
-    
-    .header-links {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    
-    .menu-button a {
-        padding: 0.75rem 1.5rem;
-        font-size: 1rem;
-        margin: 0.25rem;
-    }
-    
+}
+
+@media (max-width: 1024px) {
     h1 {
-        font-size: 4rem;
+        font-size: 4.5rem;
     }
-    
+
     h2 {
         font-size: 3.5rem;
     }
-    
+
     h3 {
-        font-size: 2.5rem;
+        font-size: 2.75rem;
     }
-    
+
+    h4 {
+        font-size: 1.25rem;
+    }
+
+    body,
+    p,
+    span,
+    a,
+    button,
+    input,
+    select,
+    textarea,
+    label {
+        font-size: 1rem;
+    }
+
+    .about {
+        max-width: 640px;
+        gap: 11rem;
+        padding-bottom: 10rem;
+    }
+
+    .hairdresser {
+        top: 37%;
+        transform: translate(-50%, -63%);
+        width: 72%;
+    }
+
+    .services-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
     .hero {
-        grid-template-columns: 1fr;
-        padding-top: 8rem;
+        display: flex;
+        flex-direction: column;
+        padding-top: 15.375rem;
+        padding-bottom: 10rem;
     }
-    
+
+    .hero-img {
+        display: none;
+    }
+
     .hero-text {
-        padding-right: 0;
+        padding-right: 14rem;
     }
-    
-    .cards-container {
+}
+
+@media (max-width: 768px) {
+    header {
+        display: none;
+    }
+
+    .hero-text {
+        padding-right: 12rem;
+    }
+
+    .cards {
         grid-template-columns: 1fr;
     }
-    
+
     .services-cards {
         grid-template-columns: repeat(2, 1fr);
     }
-    
+
     .contacts-container {
         grid-template-columns: 1fr;
     }
+
+    .about {
+        max-width: 460px;
+        gap: 8rem;
+        padding-bottom: 10rem;
+    }
+
+    .hairdresser {
+        top: 37%;
+        transform: translate(-50%, -63%);
+        width: 75%;
+    }
 }
 
-#about_us {
 
-    scroll-margin-top: 8rem;
-}
-#anchor_services,
-#anchor_contacts {
-    scroll-margin-top: 2rem;
+
+@media (max-width: 550px) {
+    .hero-text {
+        padding-right: 4rem;
+    }
 }
