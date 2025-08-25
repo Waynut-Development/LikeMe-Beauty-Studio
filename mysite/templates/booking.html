@@ -11,80 +11,85 @@
 
 <body>
   <div class="container">
-    <button class="close-btn" onclick="window.history.back()">×</button>
+    <div class="form-container">
+      <button class="close-btn" onclick="window.history.back()">×</button>
 
-    <div>
-      <form action="{{ url_for('canceling_rescheduling') }}" method="post">
-        <button class="top-right-btn" , type="submit">
-          Отменить или перенести
-        </button>
-      </form>
-    </div>
+      <div class="buttons-container">
+        <form action="{{ url_for('canceling') }}" method="post">
+          <button class="top-right-btn l" type="submit">Отменить</button>
+        </form>
+        <div style="width: 2px; background: #dbdbdb; margin: 0.75rem 0;"></div>
+        <form action="{{ url_for('rescheduling') }}" method="post">
+          <button class="top-right-btn r" type="submit">Перенести</button>
+        </form>
+      </div>
 
-    <div class="header">
-      <h3>Запись на услугу</h3>
-    </div>
+      <div class="header">
+        <h3>Запись на услугу</h3>
+      </div>
 
-    <section class="booking-form">
-      <form action="/book" method="POST" id="appointment-form">
-        <div class="form-group">
-          <label for="name">Имя и фамилия</label>
-          <input type="text" id="name" name="name" class="form-control" placeholder="Введите имя и фамилию" required />
-        </div>
-
-        <div class="form-group">
-          <label for="phone">Номер телефона</label>
-          <input type="tel" id="phone" name="phone" class="form-control" placeholder="+7 (___) ___-__-__" required />
-        </div>
-
-        <div class="form-group">
-          <label for="date">Дата</label>
-          <input type="date" id="date" name="date" class="form-control" required />
-        </div>
-
-        <div class="form-group">
-          <label for="service">Услуга</label>
-          <div class="select-wrapper">
-            <select id="service" name="service" class="form-control" required>
-              <option value="" disabled selected>Выберите услугу</option>
-              <option value="Стрижка женская">Стрижка женская</option>
-              <option value="Стрижка мужская">Стрижка мужская</option>
-              <option value="Стрижка детская">Стрижка детская</option>
-              <option value="Окрашивание волос">Окрашивание волос</option>
-              <option value="Сложное окрашивание">Сложное окрашивание</option>
-              <option value="Мелирование волос">Мелирование волос</option>
-              <option value="Камуфлирование седины (мужское)">
-                Камуфлирование седины (мужское)
-              </option>
-              <option value="Камуфлирование + борода">
-                Камуфлирование + стрижка бороды
-              </option>
-              <option value="Стрижка бороды">Стрижка бороды</option>
-              <option value="Пенный массаж">Пенный массаж головы</option>
-              <option value="Пилинг кожи головы">Пилинг кожи головы</option>
-              <option value="Укладка женская">Укладка женская</option>
-              <option value="Укладка мужская">Укладка мужская</option>
-              <option value="Мытьё головы">Мытьё головы</option>
-              <option value="Удаление воском">Удаление волос воском</option>
-            </select>
+      <section class="booking-form">
+        <form action="/book" method="POST" id="appointment-form">
+          <div class="form-group">
+            <label for="name">Имя и фамилия</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Введите имя и фамилию"
+              required />
           </div>
-        </div>
 
-        <div class="form-group">
-          <label for="time">Время</label>
-          <div class="select-wrapper">
-            <select id="time" name="time" class="form-control" required>
-              <option value="" disabled selected>Выберите время</option>
-            </select>
+          <div class="form-group">
+            <label for="phone">Номер телефона</label>
+            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+7 (___) ___-__-__" required />
           </div>
-        </div>
 
-        <button type="submit" class="btn">Записаться</button>
-      </form>
-    </section>
+          <div class="form-group">
+            <label for="date">Дата</label>
+            <input type="date" id="date" name="date" class="form-control" required />
+          </div>
 
-    <div id="success-message" class="success-message">
-      Спасибо! Ваша заявка сохранена. Мы свяжемся с вами для подтверждения.
+          <div class="form-group">
+            <label for="service">Услуга</label>
+            <div class="select-wrapper">
+              <select id="service" name="service" class="form-control" required>
+                <option value="" disabled selected>Выберите услугу</option>
+                <option value="Стрижка женская">Стрижка женская</option>
+                <option value="Стрижка мужская">Стрижка мужская</option>
+                <option value="Стрижка детская">Стрижка детская</option>
+                <option value="Окрашивание волос">Окрашивание волос</option>
+                <option value="Сложное окрашивание">Сложное окрашивание</option>
+                <option value="Мелирование волос">Мелирование волос</option>
+                <option value="Камуфлирование седины (мужское)">
+                  Камуфлирование седины (мужское)
+                </option>
+                <option value="Камуфлирование + борода">
+                  Камуфлирование + стрижка бороды
+                </option>
+                <option value="Стрижка бороды">Стрижка бороды</option>
+                <option value="Пенный массаж">Пенный массаж головы</option>
+                <option value="Пилинг кожи головы">Пилинг кожи головы</option>
+                <option value="Укладка женская">Укладка женская</option>
+                <option value="Укладка мужская">Укладка мужская</option>
+                <option value="Мытьё головы">Мытьё головы</option>
+                <option value="Удаление воском">Удаление волос воском</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="time">Время</label>
+            <div class="select-wrapper">
+              <select id="time" name="time" class="form-control" required>
+                <option value="" disabled selected>Выберите время</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn">Записаться</button>
+        </form>
+      </section>
+
+      <div id="success-message" class="success-message">
+        Спасибо! Ваша заявка сохранена. Мы свяжемся с вами для подтверждения.
+      </div>
     </div>
   </div>
 
