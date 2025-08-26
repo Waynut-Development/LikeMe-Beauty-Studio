@@ -5,248 +5,42 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Админ-панель расписания</title>
-  <style>
-    :root {
-      --primary: #d4af37;
-      --primary-light: #f9f5e8;
-      --dark: #333333;
-      --white: #ffffff;
-      --text: #1f2937;
-    }
-
-    body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background-color: var(--primary-light);
-      margin: 0;
-      padding: 0;
-      color: var(--text);
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 20px;
-      background: var(--white);
-      border-radius: 14px;
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.15);
-    }
-
-    .header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .header h1 {
-      margin: 10px 0 0;
-      font-size: 26px;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      padding: 10px 16px;
-      background-color: var(--primary);
-      color: var(--white);
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-      font-size: 14px;
-    }
-
-    .btn:hover {
-      background-color: #c09f2e;
-      transform: translateY(-2px);
-    }
-
-    .btn.active {
-      background-color: #b8962d;
-    }
-
-    .nav-row {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 10px;
-      flex-wrap: wrap;
-    }
-
-    .date-range {
-      font-weight: 600;
-      color: var(--dark);
-      min-width: 160px;
-      text-align: center;
-    }
-
-    .table-wrapper {
-      width: 100%;
-      overflow-x: auto;
-      /* горизонтальная прокрутка на мобильных */
-      -webkit-overflow-scrolling: touch;
-      border-radius: 10px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: center;
-      font-size: 14px;
-      user-select: none;
-      /* исключаем выделение текста при «рисовании» */
-      touch-action: pan-x;
-      /* разрешаем горизонтальный скролл, блокируем вертикальный во время жестов */
-    }
-
-    th,
-    td {
-      border: 1px solid #ddd;
-      padding: 6px;
-      min-width: 70px;
-    }
-
-    th {
-      background: var(--primary);
-      color: var(--white);
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-
-    .time-cell {
-      background: #faf7ec;
-      font-weight: 600;
-      position: sticky;
-      left: 0;
-      z-index: 2;
-    }
-
-    td.paintable {
-      cursor: pointer;
-    }
-
-    /* статусы */
-    td.free {
-      background-color: #a7f3d0;
-    }
-
-    /* зелёный */
-    td.busy {
-      background-color: #fde68a;
-    }
-
-    /* жёлтый */
-    td.off {
-      background-color: #fecaca;
-    }
-
-    /* красный */
-
-    .save-btn {
-      margin-top: 16px;
-      display: block;
-      width: 100%;
-      padding: 12px;
-      background-color: var(--primary);
-      color: var(--white);
-      font-size: 16px;
-      font-weight: bold;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      box-shadow: 0 4px 10px rgba(212, 175, 55, 0.2);
-    }
-
-    .save-btn:hover {
-      background-color: #c09f2e;
-      transform: translateY(-2px);
-    }
-
-    /* Адаптивность */
-    @media (max-width: 768px) {
-      .header h1 {
-        font-size: 22px;
-      }
-
-      .btn {
-        font-size: 13px;
-        padding: 8px 12px;
-      }
-
-      table {
-        font-size: 12px;
-      }
-
-      th,
-      td {
-        min-width: 60px;
-        padding: 5px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .controls {
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .date-range {
-        min-width: auto;
-      }
-    }
-  </style>
+  <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
+  <link rel="stylesheet" href="/static/css/style.css" />
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Админ-панель расписания</h1>
-      <p>Управляйте расписанием с любого устройства</p>
-    </div>
+  <div class="container" style="padding-bottom: 5.5rem;">
+    <div class="admin-container">
+      <a class="btn grey" href="/">На главную</a>
 
-    <!-- Период -->
-    <div class="controls">
-      <button class="btn period-btn active" data-period="day">День</button>
-      <button class="btn period-btn" data-period="week">Неделя</button>
-    </div>
+      <div class="controls period">
+        <button class="btn period-btn active" data-period="day">День</button>
+        <button class="btn period-btn" data-period="week">Неделя</button>
+      </div>
 
-    <!-- Статусы -->
-    <div class="controls">
-      <button class="btn status-btn" data-status="free">Свободно</button>
-      <button class="btn status-btn" data-status="busy">Занято</button>
-      <button class="btn status-btn" data-status="off">Не рабочий</button>
-    </div>
+      <div class="controls">
+        <button class="btn status-btn" data-status="busy">Занято</button>
+        <button class="btn status-btn" data-status="free">Свободно</button>
+        <button class="btn status-btn" data-status="off">Не рабочий</button>
+      </div>
 
-    <!-- Навигация -->
-    <div class="nav-row">
-      <button class="btn nav-btn" data-dir="prev">⟨</button>
-      <div class="date-range" id="date-range"></div>
-      <button class="btn nav-btn" data-dir="next">⟩</button>
-    </div>
+      <div class="nav-row">
+        <button class="btn nav-btn grey" data-dir="prev">&lt;</button>
+        <div class="date-range" id="date-range"></div>
+        <button class="btn nav-btn grey" data-dir="next">&gt;</button>
+      </div>
 
-    <!-- Таблица -->
-    <div class="table-wrapper">
-      <div id="table-container"></div>
-    </div>
+      <div class="table-wrapper">
+        <div id="table-container"></div>
+      </div>
 
-    <!-- Сохранить -->
-    <button class="save-btn">Сохранить изменения</button>
-    <script src="/static/js/admin.js"></script>
+    </div>
+  </div>
+  <div class="bottom-panel">
+    <button class="save-btn btn big-boss-andrey">Сохранить изменения</button>
   </div>
 </body>
+<script src="/static/js/admin.js"></script>
 
 </html>
