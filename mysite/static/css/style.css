@@ -226,10 +226,6 @@ header {
     width: max-content;
 }
 
-.hero-container .big-boss-andrey {
-    padding: 1.25rem 2.5rem;
-}
-
 .hero-text {
     display: flex;
     gap: 1rem;
@@ -412,7 +408,6 @@ header {
 .widget-links {
     padding: 0.25rem 1rem;
     display: flex;
-    flex-wrap: wrap;
 }
 
 .widget-links a {
@@ -470,6 +465,10 @@ footer {
 
 .developer-icon {
     width: 14rem;
+}
+
+.big-boss-andrey {
+    padding: 1.25rem 2.5rem !important;
 }
 
 /* для страницы booking */
@@ -579,7 +578,7 @@ label {
 
 .form-control:focus {
     outline: none;
-    border-color: var(--primary);
+    border-color: var(--brand);
     box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
 }
 
@@ -628,10 +627,10 @@ select.form-control {
     display: none;
     text-align: center;
     font-size: 18px;
-    color: var(--primary);
+    color: var(--brand);
     margin-top: 25px;
     padding: 18px;
-    background-color: var(--primary-light);
+    background-color: var(--brand-light);
     border: 1px solid #e6d8a8;
     border-radius: 10px;
 }
@@ -662,6 +661,248 @@ select.form-control {
 }
 
 /* конец canceling or rescheduling */
+
+/* начало admin */
+
+.admin-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    background: var(--white);
+    border-radius: 2rem;
+}
+
+.grey {
+    width: max-content;
+    background: #f5f5f5;
+
+    &:hover {
+        background: #ebebeb;
+    }
+}
+
+.controls {
+    display: flex;
+    border: 2px solid var(--brand);
+    border-radius: 5rem;
+    overflow: hidden;
+
+    &.period {
+        display: none;
+    }
+
+    .btn {
+        background: none;
+        border-radius: initial;
+
+        &.active {
+            background-color: var(--brand);
+
+            &:hover {
+                background: var(--brand);
+            }
+        }
+
+        &:hover {
+            transform: scale(1);
+            background: #f5f5f5;
+        }
+    }
+}
+
+.nav-row {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.date-range {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.nav-btn {
+    font-size: 32px;
+    line-height: 0.8;
+    width: max-content;
+}
+
+.table-wrapper {
+    border: 2px solid #c2c2c2;
+    width: 100%;
+    overflow-x: auto;
+    border-radius: 1.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    user-select: none;
+    /* исключаем выделение текста при «рисовании» */
+    touch-action: pan-x;
+    /* разрешаем горизонтальный скролл, блокируем вертикальный во время жестов */
+}
+
+th,
+td {
+    border: 2px solid #c2c2c2;
+    /* border-left: 2px solid #ebebeb;
+    border-right: 2px solid #ebebeb; */
+    border-left: none;
+    border-right: none;
+    padding: 0.5rem 0.75rem;
+    min-width: 70px;
+}
+
+th {
+    background: var(--brand);
+    color: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.time-cell {
+    font-weight: 500;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+td.paintable {
+    cursor: pointer;
+}
+
+td.free {
+    background-color: #a7f3d0;
+}
+
+td.busy {
+    background-color: #fecaca;
+}
+
+td.off {
+    background-color: #fde68a;
+}
+
+.bottom-panel {
+    z-index: 100;
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+}
+
+.save-btn {
+    width: max-content;
+}
+
+.dark {
+    background: var(--dark);
+    color: var(--white);
+}
+
+/* Подготовка ячеек */
+td.paintable {
+    position: relative;
+}
+
+/* Фон через ::before */
+td.paintable::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Чередование по столбцам только для tbody и только если нет статуса */
+table tbody tr td:nth-child(odd):not(.time-cell):not(.free):not(.busy):not(.off)::before {
+    background: #fff;
+}
+
+table tbody tr td:nth-child(even):not(.time-cell):not(.free):not(.busy):not(.off)::before {
+    background: #f5f5f5;
+}
+
+table tr:first-child th {
+    border-top: none;
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table tr td:first-child,
+table tr th:first-child {
+    border-left: none;
+}
+
+table tr td:last-child,
+table tr th:last-child {
+    border-right: none;
+}
+
+table thead th {
+    background-color: var(--brand);
+    color: var(--white);
+}
+
+table thead th:nth-child(odd):not(.time-cell) {
+    background: var(--brand);
+}
+
+table thead th:nth-child(even):not(.time-cell) {
+    background: var(--dark-brand);
+}
+
+/* @media (max-width: 768px) {
+    .header h1 {
+        font-size: 22px;
+    }
+
+    .btn {
+        font-size: 13px;
+        padding: 8px 12px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        min-width: 60px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .controls {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .date-range {
+        min-width: auto;
+    }
+} */
+
+/* конец admin */
 
 /* aдаптив */
 

@@ -1,8 +1,26 @@
 const tableContainer = document.getElementById("table-container");
-const periodButtons = document.querySelectorAll(".period-btn");
 const statusButtons = document.querySelectorAll(".status-btn");
 const navButtons = document.querySelectorAll(".nav-btn");
 const dateRangeEl = document.getElementById("date-range");
+const periodButtons = document.querySelectorAll(".period-btn");
+
+// Функция для установки режима в зависимости от ширины
+function setPeriodByWidth() {
+  const width = window.innerWidth;
+  let targetPeriod = width < 768 ? "day" : "week";
+
+  periodButtons.forEach((btn) => {
+    btn.classList.remove("active");
+    if (btn.dataset.period === targetPeriod) {
+      btn.classList.add("active");
+    }
+  });
+
+  loadSchedule(targetPeriod);
+}
+
+// Следим за ресайзом
+window.addEventListener("resize", setPeriodByWidth);
 
 let currentStatus = null;
 let startDate = new Date();
@@ -42,10 +60,18 @@ function getDates(period) {
 }
 
 function setDateRangeText(dates) {
+  function formatDateDots(d) {
+    // Форматируем дату в dd.mm.yyyy для отображения
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    const year = d.getFullYear();
+    return `${day}.${month}.${year}`;
+  }
+
   if (dates.length === 1) {
-    dateRangeEl.textContent = formatDate(dates[0]);
+    dateRangeEl.textContent = formatDateDots(dates[0]);
   } else {
-    dateRangeEl.textContent = `${formatDate(dates[0])} — ${formatDate(
+    dateRangeEl.textContent = `${formatDateDots(dates[0])} — ${formatDateDots(
       dates[dates.length - 1]
     )}`;
   }
@@ -110,16 +136,19 @@ function attachPaintHandlers(tableEl) {
 function generateTable(dates, times, data) {
   setDateRangeText(dates);
 
-  let html = '<table><thead><tr><th class="time-cell">Время</th>';
+  let html = '<table><thead><tr><th class="time-cell"></th>';
   dates.forEach((d) => {
-    html += `<th>${formatDate(d)}</th>`;
+    // Для отображения пользователю — dd.mm
+    const day = String(d.getDate()).padStart(2, "0");
+    const month = String(d.getMonth() + 1).padStart(2, "0");
+    html += `<th>${day}.${month}</th>`;
   });
   html += "</tr></thead><tbody>";
 
   times.forEach((time) => {
     html += `<tr><td class="time-cell">${time}</td>`;
     dates.forEach((date) => {
-      const dateStr = formatDate(date);
+      const dateStr = formatDate(date); // остаётся yyyy-mm-dd для data-date
       const cellData = data.find((d) => d.date === dateStr && d.time === time);
       const status = cellData ? cellData.status : "";
       html += `<td class="paintable ${status}" data-date="${dateStr}" data-time="${time}"></td>`;
@@ -196,4 +225,11 @@ navButtons.forEach((btn) => {
 document.querySelector(".save-btn").addEventListener("click", saveSchedule);
 
 // ---------- СТАРТ ----------
-loadSchedule("day");
+setPeriodByWidth();
+
+const defaultStatusBtn = document.querySelector('.status-btn[data-status="busy"]');
+if (defaultStatusBtn) {
+  statusButtons.forEach((b) => b.classList.remove("active"));
+  defaultStatusBtn.classList.add("active");
+  currentStatus = "busy";
+}
