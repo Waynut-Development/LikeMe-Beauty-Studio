@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Админ-панель расписания</title>
+  <title>Админ-панель</title>
   <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
   <link rel="stylesheet" href="/static/css/style.css" />
 </head>
@@ -12,7 +12,7 @@
 <body>
   <div class="container" style="padding-bottom: 6rem;">
     <div class="admin-container">
-      <a class="btn grey" href="/">На главную</a>
+      <a class="btn gray" href="/">На главную</a>
 
       <div class="controls period">
         <button class="btn period-btn active" data-period="day">День</button>
@@ -22,13 +22,13 @@
       <div class="controls">
         <button class="btn status-btn" data-status="busy">Занято</button>
         <button class="btn status-btn" data-status="free">Свободно</button>
-        <button class="btn status-btn" data-status="off">Не рабочий</button>
+        <button class="btn status-btn" data-status="off">Закрыто</button>
       </div>
 
       <div class="nav-row">
-        <button class="btn nav-btn grey" data-dir="prev">&lt;</button>
+        <button class="btn nav-btn gray" data-dir="prev">&lt;</button>
         <div class="date-range" id="date-range"></div>
-        <button class="btn nav-btn grey" data-dir="next">&gt;</button>
+        <button class="btn nav-btn gray" data-dir="next">&gt;</button>
       </div>
 
       <div class="table-wrapper">
