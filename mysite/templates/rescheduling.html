@@ -26,7 +26,7 @@
       </div>
 
       <section class="booking-form">
-        <form action="/book" method="POST" id="appointment-form" class="form">
+        <form action="{{ url_for('rescheduling') }}" method="POST" id="appointment-form" class="form">
           <div class="form-group">
             <label for="name">Имя и фамилия</label>
             <input type="text" id="name" class="form-control" placeholder="Введите ваше имя" required>
@@ -73,14 +73,20 @@
           <div class="form-group mb">
             <label for="service">Услуга</label>
             <div class="select-wrapper">
-              <select id="service" class="form-control" required>
-                <option value="" disabled selected>Выберите для переноса</option>
-                <option value="haircut">Стрижка</option>
-                <option value="coloring">Окрашивание</option>
-                <option value="manicure">Маникюр</option>
-                <option value="pedicure">Педикюр</option>
-                <option value="massage">Массаж</option>
-                <option value="consultation">Консультация</option>
+              <select id="service" name="service" class="form-control" required>
+                <option value="" disabled selected>Выберите услугу</option>
+                <option value="Стрижка женская">Стрижка женская</option>
+                <option value="Стрижка мужская">Стрижка мужская</option>
+                <option value="Стрижка детская">Стрижка детская</option>
+                <option value="Окрашивание волос">Окрашивание волос</option>
+                <option value="Сложное окрашивание">
+                  Сложное окрашивание
+                </option>
+                <option value="Мелирование волос">Мелирование волос</option>
+                <option value="Стрижка бороды">Стрижка бороды</option>
+                <option value="Укладка женская">Укладка женская</option>
+                <option value="Укладка мужская">Укладка мужская</option>
+              </select>
               </select>
             </div>
           </div>
