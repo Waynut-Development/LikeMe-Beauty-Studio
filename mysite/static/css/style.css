@@ -813,7 +813,7 @@ table {
     text-align: center;
     font-size: 14px;
     user-select: none;
-    touch-action: pan-x;
+    touch-action: auto;
 }
 
 th,
@@ -845,6 +845,28 @@ table thead th {
 
 td.paintable {
     cursor: pointer;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: pan-x;
+    outline: none;
+}
+
+td.paintable::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    pointer-events: none;
+    z-index: 2;
+}
+
+td.time-cell {
+    touch-action: pan-y;
+}
+
+td.paintable:focus {
+    outline: none;
 }
 
 td.free {
@@ -880,15 +902,6 @@ td.off::before {
     z-index: 3;
 }
 
-td.paintable::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    pointer-events: none;
-    z-index: 2;
-}
-
 .bottom-panel {
     z-index: 100;
     position: fixed;
@@ -905,19 +918,6 @@ td.paintable::after {
 .dark {
     background: var(--dark);
     color: var(--white);
-}
-
-td.paintable {
-    position: relative;
-}
-
-td.paintable::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: transparent;
-    pointer-events: none;
-    z-index: 2;
 }
 
 table tr td:nth-child(even):not(.time-cell).paintable::after,
