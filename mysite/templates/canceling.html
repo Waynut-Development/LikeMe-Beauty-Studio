@@ -1,118 +1,154 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Отмена записи</title>
+    <link rel="stylesheet" href="/static/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="/static/images/icon.svg"
+      type="image/x-icon"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Отмена записи</title>
-  <link rel="stylesheet" href="/static/css/style.css" />
-  <link rel="shortcut icon" href="/static/images/icon.svg" type="image/x-icon" />
-</head>
+  <body>
+    <div class="container">
+      <div class="form-container">
+        <div class="close-btn" onclick="window.history.back()"><</div>
 
-<body>
-  <div class="container">
-    <div class="form-container">
-      <div class="close-btn" onclick="window.history.back()">&lt;</div>
+        <!-- Кнопка "На главную" — отдельно, НЕ внутри основной формы -->
+        <div class="buttons-container">
+          <form action="{{ url_for('home') }}" style="display: inline">
+            <button class="top-right-btn" type="submit">На главную</button>
+          </form>
+        </div>
 
-      <div class="buttons-container">
-        <form action="{{ url_for('home') }}">
-          <button class="top-right-btn" type="submit">На главную</button>
-        </form>
-      </div>
+        <div class="header">
+          <h3>Отмена записи</h3>
+        </div>
 
-      <div class="header">
-        <h3>Отмена записи</h3>
-      </div>
-
-      <section class="booking-form">
-        <form action="/book" method="POST" id="appointment-form" class="form">
-          <div class="form-group">
-            <label for="name">Имя и фамилия</label>
-            <input type="text" id="name" class="form-control" placeholder="Введите ваше имя" required />
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Номер телефона</label>
-            <input type="tel" id="phone" class="form-control" placeholder="+7 (___) ___-__-__" required />
-          </div>
-
-          <div class="form-group">
-            <label for="service">Услуга</label>
-            <div class="select-wrapper">
-              <select id="service" class="form-control" required>
-                <option value="" disabled selected>
-                  Выберите услугу на которую была запись
-                </option>
-                <option value="haircut">Стрижка</option>
-                <option value="coloring">Окрашивание</option>
-                <option value="manicure">Маникюр</option>
-                <option value="pedicure">Педикюр</option>
-                <option value="massage">Массаж</option>
-                <option value="consultation">Консультация</option>
-              </select>
+        <!-- Основная форма отмены записи -->
+        <section class="booking-form">
+          <form
+            action="{{ url_for('cancel') }}"
+            method="POST"
+            id="appointment-form"
+            class="form"
+          >
+            <div class="form-group">
+              <label for="name">Имя и фамилия</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                class="form-control"
+                placeholder="Введите ваше имя"
+                required
+              />
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="date">Дата</label>
-            <input type="date" id="date" class="form-control" required />
-          </div>
+            <div class="form-group">
+              <label for="phone">Номер телефона</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                class="form-control"
+                placeholder="+7 (___) ___-__-__"
+                required
+              />
+            </div>
 
-          <button type="submit" class="btn">Отменить запись</button>
-        </form>
-      </section>
+            <div class="form-group">
+              <label for="service">Услуга</label>
+              <div class="select-wrapper">
+                <select
+                  id="service"
+                  name="service"
+                  class="form-control"
+                  required
+                >
+                  <option value="" disabled selected>
+                    Выберите услугу на которую была запись
+                  </option>
+                  <option value="Стрижка женская">Стрижка женская</option>
+                  <option value="Стрижка мужская">Стрижка мужская</option>
+                  <option value="Стрижка детская">Стрижка детская</option>
+                  <option value="Окрашивание волос">Окрашивание волос</option>
+                  <option value="Сложное окрашивание">
+                    Сложное окрашивание
+                  </option>
+                  <option value="Мелирование волос">Мелирование волос</option>
+                  <option value="Стрижка бороды">Стрижка бороды</option>
+                  <option value="Укладка женская">Укладка женская</option>
+                  <option value="Укладка мужская">Укладка мужская</option>
+                </select>
+              </div>
+            </div>
 
-      <div id="success-message" class="success-message">
-        Спасибо! Для подтверждения отмены записи нужно подтвердить номер
-        телефона!
+            <!-- Поле "Дата" ВНУТРИ формы -->
+            <div class="form-group">
+              <label for="date">Дата</label>
+              <input
+                type="date"
+                id="date"
+                name="date"
+                class="form-control"
+                required
+              />
+            </div>
+
+            <!-- Кнопка submit ВНУТРИ формы -->
+            <button type="submit" class="btn">Отменить запись</button>
+          </form>
+          <!-- ✅ Единственное и правильное закрытие формы -->
+        </section>
       </div>
     </div>
-  </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // ======= МАСКА ДЛЯ ТЕЛЕФОНА =======
+        const phoneInput = document.getElementById("phone");
 
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // ======= МАСКА ДЛЯ ТЕЛЕФОНА =======
-      const phoneInput = document.getElementById("phone");
+        function maskPhone(event) {
+          let value = phoneInput.value.replace(/\D/g, ""); // только цифры
+          if (value.startsWith("7")) {
+            value = value.substring(1); // убираем первую 7, так как "+7" фиксированное
+          }
+          let result = "+7 (";
 
-      function maskPhone(event) {
-        let value = phoneInput.value.replace(/\D/g, ""); // только цифры
-        if (value.startsWith("7")) {
-          value = value.substring(1); // убираем первую 7, так как "+7" фиксированное
+          if (value.length > 0) result += value.substring(0, 3);
+          if (value.length >= 3) result += ") " + value.substring(3, 6);
+          if (value.length >= 6) result += "-" + value.substring(6, 8);
+          if (value.length >= 8) result += "-" + value.substring(8, 10);
+
+          phoneInput.value = result;
         }
-        let result = "+7 (";
 
-        if (value.length > 0) result += value.substring(0, 3);
-        if (value.length >= 3) result += ") " + value.substring(3, 6);
-        if (value.length >= 6) result += "-" + value.substring(6, 8);
-        if (value.length >= 8) result += "-" + value.substring(8, 10);
+        phoneInput.addEventListener("input", maskPhone);
+        phoneInput.addEventListener("focus", maskPhone);
+        phoneInput.addEventListener("blur", () => {
+          if (phoneInput.value === "+7 (") phoneInput.value = "";
+        });
 
-        phoneInput.value = result;
-      }
+        // ======= ДАТА ПО УМОЛЧАНИЮ 2025 =======
+        const dateInput = document.getElementById("date");
+        const today = new Date();
 
-      phoneInput.addEventListener("input", maskPhone);
-      phoneInput.addEventListener("focus", maskPhone);
-      phoneInput.addEventListener("blur", () => {
-        if (phoneInput.value === "+7 (") phoneInput.value = "";
+        const year = 2025; // фиксированный год
+        const month = String(today.getMonth() + 1).padStart(2, "0"); // текущий месяц
+        const fakeDay = "01"; // временный день, чтобы input не ругался
+
+        // устанавливаем 2025-MM-01
+        dateInput.value = `${year}-${month}-${fakeDay}`;
+
+        // но сразу очищаем день, чтобы пользователь выбрал сам
+        dateInput.addEventListener("focus", () => {
+          dateInput.value = "";
+          dateInput.min = `${year}-${month}-01`;
+        });
       });
-
-      // ======= ДАТА ПО УМОЛЧАНИЮ 2025 =======
-      const dateInput = document.getElementById("date");
-      const today = new Date();
-
-      const year = 2025; // фиксированный год
-      const month = String(today.getMonth() + 1).padStart(2, "0"); // текущий месяц
-      const fakeDay = "01"; // временный день, чтобы input не ругался
-
-      // устанавливаем 2025-MM-01
-      dateInput.value = `${year}-${month}-${fakeDay}`;
-
-      // но сразу очищаем день, чтобы пользователь выбрал сам
-      dateInput.addEventListener("focus", () => {
-        dateInput.value = "";
-        dateInput.min = `${year}-${month}-01`;
-      });
-    });
-  </script>
-</body>
-
+    </script>
+  </body>
 </html>

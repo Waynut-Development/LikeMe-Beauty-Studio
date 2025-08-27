@@ -112,6 +112,108 @@ def book():
 
     return redirect(url_for("success"))
 
+# ---------- Отмена записи ----------
+@app.route("/cancel", methods=["POST"])
+def cancel():
+    name = request.form.get("name")
+    phone = request.form.get("phone")
+    service = request.form.get("service")
+    date = request.form.get("date")
+
+    conn = get_db_connection()
+
+    # ищем запись
+    appointment = conn.execute(
+        "SELECT * FROM appointments WHERE name=? AND phone=? AND service=? AND date=?",
+        (name, phone, service, date)
+    ).fetchone()
+
+    if not appointment:
+        conn.close()
+        return jsonify({"error": "Запись не найдена"}), 404
+
+    # освобождаем слот
+    conn.execute(
+        "UPDATE schedule SET status='free' WHERE date=? AND time=?",
+        (appointment["date"], appointment["time"])
+    )
+
+    # удаляем запись
+    conn.execute("DELETE FROM appointments WHERE id=?", (appointment["id"],))
+    conn.commit()
+    conn.close()
+
+    # уведомление в Telegram
+    message = (
+        f"❌ Отмена записи\n"
+        f"Имя: {name}\n"
+        f"Телефон: {phone}\n"
+        f"Услуга: {service}\n"
+        f"Дата: {date}"
+    )
+    send_telegram_message(message)
+
+    return render_template("canceling.html", success=True)
+
+
+# ---------- Перенос записи ----------
+@app.route("/reschedule", methods=["POST"])
+def reschedule():
+    name = request.form.get("name")
+    phone = request.form.get("phone")
+    service = request.form.get("service")
+    old_date = request.form.get("old_date")
+    old_time = request.form.get("old_time")
+    new_date = request.form.get("date")
+    new_time = request.form.get("time")
+
+    conn = get_db_connection()
+
+    # ищем старую запись
+    appointment = conn.execute(
+        "SELECT * FROM appointments WHERE name=? AND phone=? AND service=? AND date=? AND time=?",
+        (name, phone, service, old_date, old_time)
+    ).fetchone()
+
+    if not appointment:
+        conn.close()
+        return jsonify({"error": "Запись не найдена"}), 404
+
+    # освободить старый слот
+    conn.execute(
+        "UPDATE schedule SET status='free' WHERE date=? AND time=?",
+        (old_date, old_time)
+    )
+
+    # занять новый слот
+    conn.execute(
+        "UPDATE schedule SET status='busy' WHERE date=? AND time=?",
+        (new_date, new_time)
+    )
+
+    # обновить запись
+    conn.execute(
+        "UPDATE appointments SET date=?, time=? WHERE id=?",
+        (new_date, new_time, appointment["id"])
+    )
+
+    conn.commit()
+    conn.close()
+
+    # уведомление в Telegram
+    message = (
+        f"🔄 Перенос записи\n"
+        f"Имя: {name}\n"
+        f"Телефон: {phone}\n"
+        f"Услуга: {service}\n"
+        f"С {old_date} {old_time}\n"
+        f"На {new_date} {new_time}"
+    )
+    send_telegram_message(message)
+
+    return render_template("rescheduling.html", success=True)
+
+
 # ---------- Расписание (API для админки) ----------
 @app.route("/schedule", methods=["GET"])
 def get_schedule():
