@@ -39,15 +39,15 @@
   </header>
 
   <div class="hero">
-    <div class="logo-container">
+    <!-- <div class="logo-container">
       <img class="likeme" src="{{ url_for('static', filename='images/logo.svg') }}" alt="LikeMe Logo" />
-    </div>
+    </div> -->
     <div class="hero-container">
       <div class="hero-text">
         <h1>LikeMe<br>beauty studio</h1>
         <p>
           Мы предлагаем широкий спектр парикмахерских услуг в Кемерово.
-          Главный мастер – Анастасия, профессионал с большим опытом
+          <span class="h">Главный мастер Анастасия — профессионал с большим опытом</span>
         </p>
       </div>
       <div class="menu-button">
@@ -68,7 +68,7 @@
 
     <div class="card">
       <img src="{{ url_for('static', filename='images/cosmetics.svg') }}" alt="Online" class="card-image" />
-      <h4>Для тех, кто ценит качество</h4>
+      <h4>Кому важно качество</h4>
       <p>Используем только профессиональные бренды и проверенные методики</p>
     </div>
 
@@ -82,10 +82,11 @@
   <div id="about"></div>
 
   <div class="about">
-    <h2>LikeMe beauty studio: ваш комфорт и экспертная забота о волосах</h2>
+    <h2 class="o">LikeMe beauty studio: ваш комфорт и забота о волосах</h2>
+    <h2 class="c">Ваш комфорт и забота о волосах</h2>
     <img class="hairdresser" src="{{ url_for('static', filename='images/hairdresser.svg') }}" />
     <p>
-      Главный мастер студии — парикмахер с многолетним опытом. Мы виртуозно
+      <span class="a">Главный мастер студии — парикмахер с многолетним опытом.</span> Мы виртуозно
       создаем стильные стрижки, сложное окрашивание и занимаемся
       восстановлением волос.<span class="hide"> Для нас важна не только техника, но и атмосфера:
         индивидуальный подход и любовь к своему делу</span>
@@ -148,7 +149,7 @@
           <img src="{{ url_for('static', filename='images/services/6.webp') }}" />
         </div>
         <div class="description">
-          <p>Сложное окрашивание аиртач</p>
+          <p>Сложное окрашивание</p>
           <h4>от 7 000 ₽</h4>
         </div>
       </div>

@@ -22,10 +22,22 @@
       </div>
 
       <div class="header">
-        <h3>Перенос записи</h3>
+        <h4>Перенос записи</h4>
       </div>
 
-      <section class="booking-form">
+      <div class="warring">
+        <p>Данная функция временно недоступна. Для отмены или переноса, пожалуйста, свяжитесь с нами:
+        </p>
+        <h5 style="padding-bottom: 1rem;">+7 (951) 586-10-90</h5>
+        <a class="contacts-button tg" href="https://t.me/like_me42" target="_blank">
+          Telegram
+        </a>
+        <a class="contacts-button wa" href="https://wa.me/message/PBFV3BIKUEW7P1?src=qr" target="_blank">
+          WhatsApp
+        </a>
+      </div>
+
+      <!-- <section class="booking-form">
         <form action="{{ url_for('rescheduling') }}" method="POST" id="appointment-form" class="form">
           <div class="form-group">
             <label for="name">Имя и фамилия</label>
@@ -38,23 +50,22 @@
           </div>
 
           <div class="form-group">
-            <label for="date">Дата</label>
-            <div class="date-wrapper">
-              <input type="date" id="date" class="form-control" required>
-              <svg class="calendar-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 
-                            0-2 .9-2 2v14c0 1.1.89 2 
-                            2 2h14c1.1 0 2-.9 
-                            2-2V6c0-1.1-.9-2-2-2m0 
-                            16H5V10h14z" />
-              </svg>
-            </div>
+            <label for="old_date">Старая дата</label>
+            <input type="date" id="old_date" name="old_date" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="old_time">Старое время</label>
+            <input type="time" id="old_time" name="old_time" class="form-control" required />
           </div>
 
           <div class="form-group">
-            <label for="time">Время</label>
+            <label for="date">Новая дата</label>
+            <input type="date" id="date" name="date" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Новое время</label>
             <div class="select-wrapper">
-              <select id="time" class="form-control" required>
+              <select id="time" name="time" class="form-control" required>
                 <option value="" disabled selected>Выберите время</option>
                 <option value="09:00">09:00</option>
                 <option value="10:00">10:00</option>
@@ -92,7 +103,7 @@
           </div>
           <button type="submit" class="btn">Перенести запись</button>
         </form>
-      </section>
+      </section> -->
 
       <div id="success-message" class="success-message">
         Спасибо! Для подтверждения переноса записи нужно подтвердить номер телефона!

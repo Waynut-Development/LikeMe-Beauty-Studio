@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&family=Manrope:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500..700&display=swap');
 
 * {
     margin: 0;
@@ -35,44 +35,38 @@ img {
 
 h1,
 h2,
-h3 {
-    font-family: "Alumni Sans", sans-serif;
+h3,
+h4,
+h5 {
+    color: var(--dark-text);
+    font-family: "Manrope", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
 h1 {
-    font-size: 6rem;
-    line-height: 0.8;
+    font-size: 5rem;
+    line-height: 0.85;
     font-weight: 700;
 }
 
 h2 {
     font-weight: 600;
-    font-size: 5rem;
+    font-size: 4.25rem;
     font-weight: 600;
-    line-height: 0.8;
-    color: var(--dark-text);
+    line-height: 0.85;
     letter-spacing: -0.02em;
 }
 
 h3 {
-    font-weight: 600;
-    font-size: 3.5rem;
-    font-weight: 600;
+    font-size: 2.5rem;
+    font-weight: 700;
     line-height: 0.9;
-    color: var(--dark-text);
     letter-spacing: -0.02em;
 }
 
-h4,
-h5 {
-    font-family: "Manrope", sans-serif;
-}
-
 h4 {
-    font-size: 1.5rem;
-    color: var(--dark-text);
+    font-size: 1.75rem;
     font-weight: 700;
 }
 
@@ -135,6 +129,7 @@ header {
 .header-links {
     display: flex;
     align-items: center;
+    gap: 0.25rem;
 }
 
 .menu-button {
@@ -177,10 +172,10 @@ header {
 }
 
 .pl {
-    padding-left: 0.75rem;
+    padding-left: 1rem;
 }
 
-.logo-container {
+/* .logo-container {
     position: absolute;
     top: 1rem;
     width: max-content;
@@ -191,7 +186,7 @@ header {
 
 .logo-container img {
     height: 4.375rem;
-}
+} */
 
 .menu-button button {
     font-family: "Manrope", sans-serif;
@@ -222,27 +217,32 @@ header {
 
 .hero {
     position: relative;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    margin: 0 auto;
-    max-width: 1400px;
-    gap: 1rem;
-    padding: 0 1rem;
-    padding-top: 6.5rem;
-    padding-bottom: 12rem;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
 }
 
 .hero .hero-img {
+    z-index: -10;
+    position: absolute;
     width: 100%;
-    border-radius: 1.25rem;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    object-fit: cover;
 }
 
 .hero-container {
     width: 100%;
+    height: 100%;
+    max-width: 1400px;
+    padding-bottom: 1rem;
+    margin: 0 auto;
     display: flex;
     gap: 2rem;
     flex-direction: column;
     justify-content: center;
+    color: #fff;
 }
 
 .hero-container .menu-button {
@@ -250,12 +250,17 @@ header {
 }
 
 .hero-text {
+    text-shadow: 4px 4px 32px rgba(0, 0, 0, 0.4);
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-direction: column;
 
+    h1 {
+        color: #fff;
+    }
+
     p {
-        padding-right: 5rem;
+        width: 28rem;
     }
 }
 
@@ -264,19 +269,19 @@ header {
     max-width: 1400px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    padding: 0 1rem;
+    padding: 1rem;
     gap: 1rem;
     padding-bottom: 12rem;
 }
 
 .card {
     height: 100%;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    background-color: white;
+    background-color: #fff;
     transition: transform 0.3s ease;
 }
 
@@ -297,7 +302,7 @@ header {
 .about {
     position: relative;
     margin: 0 auto;
-    max-width: 900px;
+    max-width: 940px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -306,12 +311,16 @@ header {
     padding-bottom: 10rem;
 }
 
+.c {
+    display: none;
+}
+
 .hairdresser {
     position: absolute;
-    top: 42%;
+    top: 40%;
     left: 50%;
-    transform: translate(-50%, -58%);
-    width: 75%;
+    transform: translate(-50%, -60%);
+    width: 60%;
 }
 
 .services,
@@ -352,7 +361,7 @@ header {
 
 .services-card .services-img {
     display: flex;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     overflow: hidden;
 }
 
@@ -373,7 +382,7 @@ header {
 
 .contacts-cards {
     background: #fff;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     padding: 1.25rem 1rem;
     display: flex;
     flex-direction: column;
@@ -403,7 +412,7 @@ header {
     display: flex;
     justify-content: center;
     padding: 1rem 2rem;
-    border-radius: 0.75rem;
+    border-radius: 1rem;
     transition: all 0.3s ease;
 }
 
@@ -426,7 +435,7 @@ header {
 }
 
 .widget-container {
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     overflow: hidden;
     background-color: #ffffff;
 }
@@ -483,7 +492,7 @@ footer {
     width: 100%;
     flex-direction: column;
     padding: 1.25rem 2rem;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     background: var(--dark);
 
     button {
@@ -506,7 +515,7 @@ footer {
     gap: 0.25rem;
     padding: 1rem 2rem;
     padding-top: 1.5rem;
-    border-radius: 1.25rem;
+    border-radius: 1.5rem;
     background: var(--dark);
 
     .logo path {
@@ -967,19 +976,20 @@ table thead th:nth-child(even):not(.time-cell) {
 
 @media (max-width: 1024px) {
     h1 {
-        font-size: 4.5rem;
+        line-height: 0.95;
+        font-size: 3.75rem;
     }
 
     h2 {
-        font-size: 3.25rem;
+        font-size: 3rem;
     }
 
     h3 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     h4 {
-        font-size: 1.375rem;
+        font-size: 1.5rem;
     }
 
     body,
@@ -1002,15 +1012,19 @@ table thead th:nth-child(even):not(.time-cell) {
     }
 
     .about {
-        max-width: 640px;
-        gap: 11rem;
+        max-width: 530px;
+        gap: 9rem;
         padding-bottom: 10rem;
     }
 
+    .hide {
+        display: none;
+    }
+
     .hairdresser {
-        top: 37%;
-        transform: translate(-50%, -63%);
-        width: 72%;
+        top: 38%;
+        transform: translate(-50%, -62%);
+        width: 70%;
     }
 
     .dg-widget-container iframe {
@@ -1027,39 +1041,102 @@ table thead th:nth-child(even):not(.time-cell) {
     }
 }
 
-@media (max-width: 900px) {
-    .hero {
-        display: flex;
-        flex-direction: column;
-        padding-top: 15.625rem;
-        padding-bottom: 10rem;
-    }
-
-    .hero-img {
-        display: none;
-    }
-
-    .hero-text p {
-        padding-right: 14rem;
-    }
-}
-
 @media (max-width: 768px) {
+    h1 {
+        font-size: 3.5rem;
+    }
 
-    .hide {
-        display: none;
+    h2 {
+        font-size: 2.75rem;
     }
 
     /* .header-button {
         display: initial;
     } */
 
-    .hero-text p {
-        padding-right: 12rem;
+    .header-container {
+        border-radius: 1.5rem;
+    }
+
+    .header-container,
+    .header-links {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .contacts-cards {
+        padding: 0.5rem;
+
+        .contacts-buttons {
+            gap: 0.5rem;
+        }
+    }
+
+    .menu-button {
+        width: 100%;
+        justify-content: center;
+
+        a {
+            width: 100%;
+        }
+
+        button {
+            border-radius: 1rem;
+        }
+    }
+
+    .hero,
+    .hero .hero-img {
+        height: auto;
+    }
+
+    .hero .hero-img {
+        position: initial;
+        border-radius: 1.5rem;
+    }
+
+    .hero-container {
+        padding-top: 5.375rem;
+
+        .menu-button {
+            display: none;
+        }
+    }
+
+    .hero-text {
+        text-shadow: initial;
+        display: flex;
+        gap: 1rem;
+        flex-direction: column;
+        padding: 1rem 0;
+
+        h1 {
+            color: var(--dark);
+        }
+
+        p {
+            width: 22rem;
+            color: var(--dark);
+        }
+
+        .h {
+            display: none;
+        }
     }
 
     .cards {
+        padding-top: 0;
         grid-template-columns: 1fr;
+    }
+
+    .about {
+        max-width: 500px;
+    }
+
+    .hairdresser {
+        top: 36%;
+        transform: translate(-50%, -64%);
+        width: 75%;
     }
 
     .services-cards {
@@ -1070,20 +1147,8 @@ table thead th:nth-child(even):not(.time-cell) {
         grid-template-columns: 1fr;
     }
 
-    .about {
-        max-width: 440px;
-        gap: 8rem;
-        padding-bottom: 10rem;
-    }
-
     .dg-widget-container iframe {
         height: 460px;
-    }
-
-    .hairdresser {
-        top: 38%;
-        transform: translate(-50%, -62%);
-        width: 75%;
     }
 
     input[type="date"]::-webkit-calendar-picker-indicator {
@@ -1111,57 +1176,100 @@ table thead th:nth-child(even):not(.time-cell) {
     }
 }
 
-@media (max-width: 680px) {
-    .likeme {
-        display: none;
-    }
+.warring {
+    padding: 2rem;
+    background: #ffe3e3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border-radius: 1rem;
 
-    .header-container,
-    .header-links {
-        width: 100%;
-        justify-content: space-between;
+    .contacts-button {
+        background: #fff;
+        border-radius: 5rem;
+
+        &:hover {
+            background: #f5f5f5;
+        }
     }
 }
 
 @media (max-width: 650px) {
+
+    .about {
+        max-width: 410px;
+        gap: 8rem;
+    }
+
+    .o {
+        display: none;
+    }
+
+    .c {
+        display: initial;
+    }
+
+    .hairdresser {
+        top: 33%;
+        transform: translate(-50%, -67%);
+        width: 74%;
+    }
+
     .footer-container {
         grid-template-columns: repeat(1, 1fr);
     }
 }
 
-@media (max-width: 550px) {
-    .hero-text p {
-        padding-right: 4rem;
-    }
-}
-
-@media (max-width: 510px) {
+@media (max-width: 525px) {
     .f {
         display: none;
     }
 }
 
-@media (max-width: 442px) {
+@media (max-width: 455px) {
+    .pl {
+        padding-left: 0;
+    }
+
+    .header-links {
+        gap: 0.5rem;
+    }
+
     .header-container {
-        padding: 0.5rem;
+        padding-left: 0.5rem;
     }
 
     .s {
         display: none;
     }
 
-    .menu-button {
-        width: 100%;
-        justify-content: center;
+}
 
-        a {
-            width: 100%;
-        }
+@media (max-width: 442px) {
+    .about {
+        max-width: 310px;
+        gap: 7rem;
+    }
+
+    .a {
+        display: none;
     }
 
     .hairdresser {
-        top: 40%;
-        transform: translate(-50%, -60%);
-        width: 75%;
+        top: 36%;
+        transform: translate(-50%, -64%);
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    h1 {
+        font-size: 3.25rem;
+    }
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 3rem;
     }
 }
