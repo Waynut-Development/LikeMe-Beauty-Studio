@@ -28,7 +28,7 @@ def show_structure(table_name: str):
         print(f"- {col[1]} ({col[2]})")
 
 
-def show_data(table_name: str, limit: int = 10):
+def show_data(table_name: str, limit: int = 100):
     """Показать данные таблицы (первые N строк)"""
     conn = sqlite3.connect(DB)
     cur = conn.cursor()

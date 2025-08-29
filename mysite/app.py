@@ -1,6 +1,7 @@
 import sqlite3
 from flask import Flask, render_template, url_for, redirect, request, jsonify
 from config import send_telegram_message
+from datetime import date, timedelta
 
 app = Flask(__name__)
 
@@ -72,11 +73,41 @@ def rescheduling():
 def free_slots(date):
     conn = get_db_connection()
     rows = conn.execute(
-        "SELECT time FROM schedule WHERE date=? AND status='free' ORDER BY time",
+        """
+        SELECT time
+        FROM schedule
+        WHERE date = ?
+          AND status = 'free'
+        ORDER BY time
+        """,
         (date,)
     ).fetchall()
     conn.close()
     return jsonify([row["time"] for row in rows])
+
+
+# ---------- Доступные даты (только 7 ближайших дней) ----------
+@app.route("/free_dates")
+def free_dates():
+    today = date.today()
+    last_day = today + timedelta(days=6)  # 7 дней включая сегодня
+
+    conn = get_db_connection()
+    rows = conn.execute(
+        """
+        SELECT DISTINCT DATE(date) as date
+        FROM schedule 
+        WHERE status='free' 
+          AND DATE(date) BETWEEN DATE(?) AND DATE(?) 
+        ORDER BY DATE(date)
+        """,
+        (today.isoformat(), last_day.isoformat())
+    ).fetchall()
+    conn.close()
+
+    return jsonify([row["date"] for row in rows])
+
+
 
 # ---------- Запись клиента ----------
 @app.route("/book", methods=["GET", "POST"])
